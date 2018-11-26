@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">Brick_android</string>
-    <string name="login_button">LOGIN</string>
+    <string name="login_button">login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="wristband">Scan wristband</string>
+    <string name="history">Scan History</string>
+    <string name="attendees">Manage Attendees</string>
+    <string name="dinner">Dinner</string>
+    <string name="checkedout">CHECKED-OUT</string>
+    <string name="checkedin">CHECKED-IN</string>
+    <string name="volunteers">VOLUNTEERS</string>
+    <string name="tag">CHANGE TAG</string>
+    <string name="scan">Scan</string>
+    <string name="history1">history</string>
+
+    <string name="title_activity_manage_attendees">ManageAttendees</string>
+
+
 </resources>
