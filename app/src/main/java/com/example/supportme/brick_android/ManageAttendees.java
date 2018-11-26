@@ -2,6 +2,7 @@ package com.example.supportme.brick_android;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 public class ManageAttendees extends AppCompatActivity {
 
@@ -9,5 +10,8 @@ public class ManageAttendees extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_attendees);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
     }
 }

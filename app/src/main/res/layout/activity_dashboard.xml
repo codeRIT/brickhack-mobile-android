@@ -4,81 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#374251"
+    android:background="@color/bg"
     tools:context=".DashBoard">
 
-    <LinearLayout
-        android:id="@+id/id_vertical"
-        android:layout_width="330dp"
-        android:layout_height="249dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rectangle"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_horizontal"
-        app:layout_constraintVertical_bias="0.54">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/id_wristband"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/my_button_bg"
-                android:text="@string/wristband"
-                android:textColor="#ffffff"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/id_history"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/my_button_bg"
-                android:text="@string/history"
-                android:textColor="#ffffff"
-                android:visibility="visible"
-                app:layout_constraintBottom_toTopOf="@+id/id_attendees"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/id_wristband" />
-
-            <Button
-                android:id="@+id/id_attendees"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/my_button_bg"
-                android:text="@string/attendees"
-                android:textColor="#ffffff"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-        </android.support.constraint.ConstraintLayout>
-
-    </LinearLayout>
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
 
     <LinearLayout
         android:id="@+id/id_horizontal"
@@ -86,12 +17,12 @@
         android:layout_height="138dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/rectangle"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/include">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="100dp"
@@ -210,4 +141,78 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_vertical"
+        android:layout_width="330dp"
+        android:layout_height="249dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rectangle"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_horizontal"
+        app:layout_constraintVertical_bias="0.54">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/id_wristband"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/my_button_bg"
+                android:text="@string/wristband"
+                android:textColor="#ffffff"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/id_history"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/my_button_bg"
+                android:text="@string/history"
+                android:textColor="#ffffff"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/id_attendees"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_wristband" />
+
+            <Button
+                android:id="@+id/id_attendees"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/my_button_bg"
+                android:text="@string/attendees"
+                android:textColor="#ffffff"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -3,9 +3,11 @@ package com.example.supportme.brick_android;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 
 public class DashBoard extends AppCompatActivity {
 
@@ -18,7 +20,9 @@ public class DashBoard extends AppCompatActivity {
         Button wristband = (Button) findViewById(R.id.id_wristband);
         Button history = (Button) findViewById(R.id.id_history);
         Button attendees = (Button) findViewById(R.id.id_attendees);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
+        setSupportActionBar(toolbar);
 
         wristband.setOnClickListener(new View.OnClickListener() {
             @Override
