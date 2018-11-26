@@ -7,4 +7,9 @@
     android:background="@color/bg"
     tools:context=".History">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
+
+
 </android.support.constraint.ConstraintLayout>

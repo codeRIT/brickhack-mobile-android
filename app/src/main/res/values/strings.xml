@@ -13,6 +13,7 @@
     <string name="tag">CHANGE TAG</string>
     <string name="scan">Scan</string>
     <string name="history1">history</string>
+    <string name="brickhack">BrickHack</string>
 
     <string name="title_activity_manage_attendees">ManageAttendees</string>
 

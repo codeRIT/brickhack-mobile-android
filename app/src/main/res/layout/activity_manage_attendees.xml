@@ -7,4 +7,8 @@
     android:background="@color/bg"
     tools:context=".ManageAttendees">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
+
 </android.support.constraint.ConstraintLayout>
