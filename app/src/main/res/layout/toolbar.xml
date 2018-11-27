@@ -14,7 +14,7 @@
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/brickhack"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textSize="20sp"/>
 
     <Button
@@ -23,11 +23,11 @@
         android:layout_height="30dp"
         android:layout_gravity="end"
         android:background="@drawable/logout"
-        android:text="logout"
+        android:text="@string/logout"
 
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textSize="12sp" />
 
 </android.support.v7.widget.Toolbar>
