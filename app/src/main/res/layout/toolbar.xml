@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+
+    android:theme="@style/toolbarStyle"
+    android:visibility="visible">
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/brickhack"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:background="@drawable/logout"
+        android:text="@string/logout"
+
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+</android.support.v7.widget.Toolbar>
