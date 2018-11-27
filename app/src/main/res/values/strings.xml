@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Brick_android</string>
-    <string name="login_button">login</string>
-    <string name="email">Email</string>
+    <string name="login_button">Login with brickhack.io»</string>
+    <string name="logout">Logout</string>
     <string name="password">Password</string>
-    <string name="wristband">Scan wristband</string>
+    <string name="wristband">Scan</string>
     <string name="history">Scan History</string>
-    <string name="attendees">Manage Attendees</string>
+    <string name="attendees">Questionnaire</string>
     <string name="dinner">Dinner</string>
     <string name="checkedout">CHECKED-OUT</string>
     <string name="checkedin">CHECKED-IN</string>

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/background"
     tools:context=".Wristband">
+
     <include
         android:id="@+id/include"
         layout="@layout/toolbar" />
@@ -60,6 +61,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_Dinner" />
+
+            <View
+                android:layout_width="330dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/black"
+                app:layout_constraintBottom_toTopOf="@+id/text_changetag"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_Dinner"
+                app:layout_constraintVertical_bias="0.0" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -76,7 +87,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/my_button_bg"
                 android:text="@string/scan"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +104,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/my_button_bg"
                 android:text="@string/history1"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.506"
