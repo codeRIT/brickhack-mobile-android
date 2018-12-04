@@ -17,9 +17,9 @@ public class DashBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        Button wristband = (Button) findViewById(R.id.id_wristband);
-        Button history = (Button) findViewById(R.id.id_history);
-        Button attendees = (Button) findViewById(R.id.id_attendees);
+        Button wristband = findViewById(R.id.id_wristband);
+        Button history = findViewById(R.id.id_history);
+        Button attendees = findViewById(R.id.id_attendees);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -45,5 +45,14 @@ public class DashBoard extends AppCompatActivity {
                 startActivity(theIntent);
             }
         });
+    }
+
+    // Prevents user from returning to login screen without pressing the logout button
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
