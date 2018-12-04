@@ -16,6 +16,7 @@
     <string name="brickhack">BrickHack</string>
 
     <string name="title_activity_manage_attendees">ManageAttendees</string>
+    <string name="bhlogo_description">BrickHack Logo</string>
 
 
 </resources>
