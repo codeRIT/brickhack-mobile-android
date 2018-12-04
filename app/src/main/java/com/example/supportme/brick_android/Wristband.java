@@ -16,7 +16,7 @@ public class Wristband extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button history = (Button) findViewById(R.id.button_history);
+        Button history = (Button) findViewById(R.id.button_scan);
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
