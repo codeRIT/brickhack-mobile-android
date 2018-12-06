@@ -5,7 +5,7 @@
     <string name="password">Password</string>
     <string name="wristband">Scan</string>
     <string name="history">Scan History</string>
-    <string name="attendees">Questionnaire</string>
+    <string name="attendees">Questionnaires</string>
     <string name="dinner">Dinner</string>
     <string name="checkedout">CHECKED-OUT</string>
     <string name="checkedin">CHECKED-IN</string>
@@ -16,6 +16,7 @@
     <string name="brickhack">BrickHack</string>
 
     <string name="title_activity_manage_attendees">ManageAttendees</string>
+    <string name="bhlogo_description">BrickHack Logo</string>
 
 
 </resources>
