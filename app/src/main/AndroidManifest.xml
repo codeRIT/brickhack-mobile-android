@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.supportme.brick_android">
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-feature android:name="android.hardware.nfc" android:required="true"/>
 
     <application
         android:allowBackup="true"
@@ -21,5 +24,4 @@
         <activity android:name=".History" />
         <activity android:name=".ManageAttendees"></activity>
     </application>
-
 </manifest>
