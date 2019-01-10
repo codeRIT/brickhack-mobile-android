@@ -107,20 +107,12 @@
                 android:id="@+id/text_volunterrs"
                 android:layout_width="84dp"
                 android:layout_height="18dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
                 android:text="@string/volunteers"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/num_volunteers"
-                app:layout_constraintVertical_bias="1.0" />
+                tools:layout_editor_absoluteX="5dp"
+                tools:layout_editor_absoluteY="104dp" />
 
             <TextView
                 android:id="@+id/num_volunteers"
