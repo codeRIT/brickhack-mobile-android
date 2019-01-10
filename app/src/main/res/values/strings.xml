@@ -10,7 +10,7 @@
     <string name="checkedout">CHECKED-OUT</string>
     <string name="checkedin">CHECKED-IN</string>
     <string name="volunteers">VOLUNTEERS</string>
-    <string name="tag">CHANGE TAG</string>
+    <string name="tag">Tag:</string>
     <string name="scan">Scan</string>
     <string name="history1">history</string>
     <string name="brickhack">BrickHack</string>
