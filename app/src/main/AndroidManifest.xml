@@ -9,21 +9,27 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/hack_logo"
-        android:label="@string/app_name"
         android:roundIcon="@drawable/hack_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Authentication">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="brickhack://oauth/callback" />
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity android:name=".DashBoard" />
         <activity android:name=".Wristband" />
         <activity android:name=".History" />
         <activity android:name=".ManageAttendees"></activity>
+
     </application>
+
+
 </manifest>
