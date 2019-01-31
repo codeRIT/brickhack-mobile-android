@@ -19,17 +19,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <data android:scheme="brickhack://oauth/callback" />
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
         <activity android:name=".DashBoard" />
         <activity android:name=".Wristband" />
         <activity android:name=".History" />
-        <activity android:name=".ManageAttendees"></activity>
-
+        <activity android:name=".ManageAttendees" />
     </application>
+
 
 
 </manifest>
