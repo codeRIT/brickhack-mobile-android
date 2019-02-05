@@ -1,4 +1,4 @@
-# brickhack-mobile-ios
+# brickhack-mobile-android
 
 The app for managing attendees for BrickHack.
 
