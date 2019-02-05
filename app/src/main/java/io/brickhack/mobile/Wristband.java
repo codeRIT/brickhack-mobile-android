@@ -1,6 +1,5 @@
-package com.example.supportme.brick_android;
+package io.brickhack.mobile;
 
-import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import io.brickhack.mobile.R;
 
 public class Wristband extends AppCompatActivity {
 
