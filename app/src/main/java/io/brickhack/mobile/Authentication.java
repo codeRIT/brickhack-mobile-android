@@ -65,7 +65,7 @@ public class Authentication extends AppCompatActivity {
                                 "a46ad487beade18ee2868fb9b6a6de69950f3a5bd7b2d5eb3fb62e35f53c120e", // the client ID, typically pre-registered and static
                                 ResponseTypeValues.CODE, // the response_type value: we want a code
                                 redirectUri); // the redirect URI to which the auth response is sent
-                authRequestBuilder.setScopes("all");
+                authRequestBuilder.setScopes("All your bricks");
                 AuthorizationRequest request = authRequestBuilder.build();
 
                 AuthorizationService authorizationService = new AuthorizationService(v.getContext());
