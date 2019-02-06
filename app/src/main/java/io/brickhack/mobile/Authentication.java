@@ -38,7 +38,9 @@ public class Authentication extends AppCompatActivity {
     private BrickHackSettings brickHackSettings = new BrickHackSettings();
     private static final int RC_AUTH = 100;
     private static final String AUTH_STATE = "AUTH_STATE";
+    private static final String SERVICE_CONFIGURATION = "SERVICE_CONFIGURATION";
     private static final String USED_INTENT = "USED_INTENT";
+    AuthorizationServiceConfiguration serviceConfig;
 
 
     @Override
@@ -53,10 +55,14 @@ public class Authentication extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AuthorizationServiceConfiguration serviceConfig =
+                serviceConfig =
                         new AuthorizationServiceConfiguration(
                                 Uri.parse("https://staging.brickhack.io/oauth/authorize"), // authorization endpoint
                                 Uri.parse("https://staging.brickhack.io/oauth/token")); // token endpoint
+
+                getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).edit()
+                        .putString(SERVICE_CONFIGURATION, serviceConfig.toJsonString())
+                        .commit();
 
                 Uri redirectUri = Uri.parse("brickhack://oauth/callback");
                 AuthorizationRequest.Builder authRequestBuilder =

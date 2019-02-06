@@ -7,22 +7,32 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import net.openid.appauth.AuthState;
+import net.openid.appauth.AuthorizationException;
+import net.openid.appauth.AuthorizationService;
+import net.openid.appauth.AuthorizationServiceConfiguration;
 
 import org.json.JSONException;
 
 import io.brickhack.mobile.R;
+
+import static io.brickhack.mobile.BrickHackSettings.LOG_TAG;
 
 
 public class DashBoard extends AppCompatActivity {
 
     private static final String SHARED_PREFERENCES_NAME = "BrickHackPreference";
     private static final String AUTH_STATE = "AUTH_STATE";
+    private static final String SERVICE_CONFIGURATION = "SERVICE_CONFIGURATION";
+
+    //private AuthorizationService mAuthorizationService = new AuthorizationService(this);
 
     AuthState authState;
+    AuthorizationServiceConfiguration serviceConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +41,8 @@ public class DashBoard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         authState = restoreAuthState();
+        serviceConfig = restoreServiceConfig();
+        //fetchTodaysStats();
 
         Button wristband = findViewById(R.id.id_wristband);
         Button history = findViewById(R.id.id_history);
@@ -88,6 +100,20 @@ public class DashBoard extends AppCompatActivity {
         if (!TextUtils.isEmpty(jsonString)) {
             try {
                 return AuthState.jsonDeserialize(jsonString);
+            } catch (JSONException jsonException) {
+                // should never happen
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private AuthorizationServiceConfiguration restoreServiceConfig() {
+        String jsonString = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+                .getString(SERVICE_CONFIGURATION, null);
+        if (!TextUtils.isEmpty(jsonString)) {
+            try {
+                return AuthorizationServiceConfiguration.fromJson(jsonString);
             } catch (JSONException jsonException) {
                 // should never happen
             }
