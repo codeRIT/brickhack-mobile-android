@@ -7,9 +7,9 @@
     <string name="history">Scan History</string>
     <string name="attendees">Questionnaires</string>
     <string name="currentTagDefault">None</string>
-    <string name="checkedout">CHECKED-OUT</string>
-    <string name="checkedin">CHECKED-IN</string>
-    <string name="volunteers">VOLUNTEERS</string>
+    <string name="denials">DENIALS</string>
+    <string name="applications">APPLICATIONS</string>
+    <string name="confirmations">CONFIRMATIONS</string>
     <string name="tag">Tag:</string>
     <string name="scan">Scan</string>
     <string name="history1">history</string>

@@ -42,7 +42,6 @@ public class DashBoard extends AppCompatActivity {
 
         authState = restoreAuthState();
         serviceConfig = restoreServiceConfig();
-        //fetchTodaysStats();
 
         Button wristband = findViewById(R.id.id_wristband);
         Button history = findViewById(R.id.id_history);
@@ -126,5 +125,9 @@ public class DashBoard extends AppCompatActivity {
                 .edit()
                 .remove(AUTH_STATE)
                 .apply();
+    }
+
+    private void fetchTodayStats(){
+
     }
 }
