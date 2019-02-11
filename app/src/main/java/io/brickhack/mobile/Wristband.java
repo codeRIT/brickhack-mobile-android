@@ -81,7 +81,12 @@ public class Wristband extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         IntentFilter[] intentFilters = new IntentFilter[]{};
 
-        nfcAdapter.enableForegroundDispatch(this, pendingIntent, intentFilters, null);
+        if(nfcAdapter != null && nfcAdapter.isEnabled()){
+            nfcAdapter.enableForegroundDispatch(this, pendingIntent, intentFilters, null);
+        }else{
+            Toast.makeText(this, "NFC not enabled on this device", Toast.LENGTH_LONG).show();
+        }
+
         super.onResume();
     }
 
