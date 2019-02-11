@@ -44,23 +44,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/num_checkedout"
+                app:layout_constraintTop_toBottomOf="@+id/num_confirmations"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/num_checkedout"
+                android:id="@+id/num_confirmations"
                 android:layout_width="94dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="8dp"
-                android:text="212"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/confirmations_default" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -82,21 +83,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/num_checkedin"
+                app:layout_constraintTop_toBottomOf="@+id/num_applications"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/num_checkedin"
+                android:id="@+id/num_applications"
                 android:layout_width="116dp"
                 android:layout_height="63dp"
                 android:layout_marginTop="22dp"
-                android:text="393"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="50sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/applications_default" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -117,23 +119,24 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/num_volunteers" />
+                app:layout_constraintTop_toBottomOf="@+id/num_denials" />
 
             <TextView
-                android:id="@+id/num_volunteers"
+                android:id="@+id/num_denials"
                 android:layout_width="86dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="11dp"
-                android:text="212"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/denials_default" />
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 

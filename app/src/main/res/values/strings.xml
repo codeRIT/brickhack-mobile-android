@@ -18,6 +18,9 @@
     <string name="title_activity_manage_attendees">ManageAttendees</string>
     <string name="bhlogo_description">BrickHack Logo</string>
     <string name="scanNotReady" />
+    <string name="denials_default">0</string>
+    <string name="applications_default">0</string>
+    <string name="confirmations_default">0</string>
 
 
 </resources>
