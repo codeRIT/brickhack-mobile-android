@@ -39,10 +39,6 @@ public class DashBoard extends AppCompatActivity {
     private static final String SHARED_PREFERENCES_NAME = "BrickHackPreference";
     private static final String AUTH_STATE = "AUTH_STATE";
     private static final String SERVICE_CONFIGURATION = "SERVICE_CONFIGURATION";
-    private static Retrofit retrofit;
-    private static final String BASE_URL = "https://jsonplaceholder.typicode.com";
-
-    //private AuthorizationService mAuthorizationService = new AuthorizationService(this);
 
     AuthState authState;
     AuthorizationServiceConfiguration serviceConfig;
