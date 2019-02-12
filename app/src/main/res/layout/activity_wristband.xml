@@ -96,22 +96,6 @@
             android:layout_width="match_parent"
             android:layout_height="170dp">
 
-            <Button
-                android:id="@+id/button_history"
-                android:layout_width="239dp"
-                android:layout_height="53dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="32dp"
-                android:background="@drawable/my_button_bg"
-                android:text="@string/history"
-                android:textColor="@color/white"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.506"
-                app:layout_constraintStart_toStartOf="parent" />
-
             <TextView
                 android:id="@+id/scanStatus"
                 android:layout_width="179dp"
@@ -119,12 +103,10 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
                 android:text="@string/scanNotReady"
                 android:textAlignment="center"
                 android:textAppearance="@android:style/TextAppearance.Material.Medium"
                 android:textColor="#bdbdbd"
-                app:layout_constraintBottom_toTopOf="@+id/button_history"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

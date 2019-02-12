@@ -54,8 +54,6 @@ public class DashBoard extends AppCompatActivity {
         serviceConfig = restoreServiceConfig();
 
         Button wristband = findViewById(R.id.id_wristband);
-        Button history = findViewById(R.id.id_history);
-        Button attendees = findViewById(R.id.id_attendees);
         Button logout = findViewById(R.id.button_logout);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -67,20 +65,6 @@ public class DashBoard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent theIntent = new Intent(DashBoard.this, Wristband.class);
-                startActivity(theIntent);
-            }
-        });
-        history.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent theIntent = new Intent(DashBoard.this, History.class);
-                startActivity(theIntent);
-            }
-        });
-        attendees.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent theIntent = new Intent(DashBoard.this, ManageAttendees.class);
                 startActivity(theIntent);
             }
         });
@@ -200,9 +184,5 @@ public class DashBoard extends AppCompatActivity {
                 });
             }
         });
-
-
-
     }
-
 }

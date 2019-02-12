@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -32,6 +31,7 @@ import net.openid.appauth.AuthorizationException;
 import net.openid.appauth.AuthorizationService;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,17 +55,8 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     private static final String AUTH_STATE = "AUTH_STATE";
     int VIB_SCAN_SUCCESS = 500;
 
-    class Tag {
-        Integer id;
-        String name;
-
-        @NonNull
-        @Override
-        public String toString() {
-            return name;
-        }
-    }
-    List<Tag> tagList = new ArrayList<Tag>();
+    List<Tag> tagList = new ArrayList<>();
+    Tag currentTag;
 
     AuthState authState;
 
@@ -79,7 +70,6 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
         authState = restoreAuthState();
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        historyButton = findViewById(R.id.button_history);
 
         Tag noneTag = new Tag();
         noneTag.id = 0;
@@ -88,13 +78,6 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
 
         getAvailableTags();
 
-        historyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent theIntent = new Intent(Wristband.this, History.class);
-                startActivity(theIntent);
-            }
-        });
     }
 
     @Override
@@ -108,7 +91,61 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
             Toast.makeText(this, "No tag selected", Toast.LENGTH_LONG).show();
         }
 
-        // TODO Connect to backend here
+        AuthorizationService authorizationService = new AuthorizationService(this);
+        authState.performActionWithFreshTokens(authorizationService, new AuthState.AuthStateAction() {
+            @Override
+            public void execute(@Nullable final String accessToken, @Nullable String idToken, @Nullable AuthorizationException ex) {
+
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                gsonBuilder.setLenient();
+                Gson gson = gsonBuilder.create();
+
+                OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+                    @Override
+                    public okhttp3.Response intercept(Chain chain) throws IOException {
+                        Request newRequest  = chain.request().newBuilder()
+                                .addHeader("Authorization", "Bearer " + accessToken)
+                                .build();
+                        return chain.proceed(newRequest);
+                    }
+                }).build();
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://staging.brickhack.io")
+                        .addConverterFactory(GsonConverterFactory.create(gson))
+                        .client(client)
+                        .build();
+
+                BrickHackAPI brickHackAPI = retrofit.create(BrickHackAPI.class);
+                Call<JsonElement> call = null;
+                try {
+                    call = brickHackAPI.submitScan(new JSONObject()
+                    .put("trackable-event", new JSONObject()
+                    .put("band_id", 0)
+                    .put("trackable_tag_id", currentTag.id)));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                call.enqueue(new Callback<JsonElement>() {
+                    @Override
+                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                        if(response.isSuccessful()){
+                            try{
+                                System.out.println("Tag submitted");
+                                populateSpinner();
+                            }catch (NullPointerException e){
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonElement> call, Throwable t) {
+                        System.out.println("ERROR: " + t.getMessage());
+                    }
+                });
+            }
+        });
 
         super.onNewIntent(Intent);
     }
@@ -237,6 +274,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         TextView currentTagLabel = findViewById(R.id.id_currentTagLabel);
         currentTagLabel.setText(adapterView.getItemAtPosition(i).toString());
+        currentTag = tagList.get(i);
     }
 
     @Override
