@@ -9,12 +9,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -41,7 +46,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Wristband extends AppCompatActivity {
+public class Wristband extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     NfcAdapter nfcAdapter;
     Button historyButton;
@@ -49,7 +54,17 @@ public class Wristband extends AppCompatActivity {
     private static final String SHARED_PREFERENCES_NAME = "BrickHackPreference";
     private static final String AUTH_STATE = "AUTH_STATE";
     int VIB_SCAN_SUCCESS = 500;
-    class Tag { Integer id; String name; }
+
+    class Tag {
+        Integer id;
+        String name;
+
+        @NonNull
+        @Override
+        public String toString() {
+            return name;
+        }
+    }
     List<Tag> tagList = new ArrayList<Tag>();
 
     AuthState authState;
@@ -62,10 +77,16 @@ public class Wristband extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         authState = restoreAuthState();
-        getAvailableTags();
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         historyButton = findViewById(R.id.button_history);
+
+        Tag noneTag = new Tag();
+        noneTag.id = 0;
+        noneTag.name = "None";
+        tagList.add(noneTag);
+
+        getAvailableTags();
 
         historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,6 +208,7 @@ public class Wristband extends AppCompatActivity {
                                     newTag.name = jsonObject.getAsJsonObject().get("name").getAsString();
                                     tagList.add(newTag);
                                 }
+                                populateSpinner();
                             }catch (NullPointerException e){
                                 e.printStackTrace();
                             }
@@ -200,5 +222,25 @@ public class Wristband extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public void populateSpinner(){
+        Spinner tagSpinner = findViewById(R.id.id_tagSpinner);
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, tagList);
+        tagSpinner.setAdapter(arrayAdapter);
+        tagSpinner.setOnItemSelectedListener(this);
+        tagSpinner.setClickable(true);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        TextView currentTagLabel = findViewById(R.id.id_currentTagLabel);
+        currentTagLabel.setText(adapterView.getItemAtPosition(i).toString());
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

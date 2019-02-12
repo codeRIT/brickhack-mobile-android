@@ -31,17 +31,22 @@
             android:layout_height="180dp">
 
             <TextView
-                android:id="@+id/text_Dinner"
+                android:id="@+id/id_currentTagLabel"
                 android:layout_width="220dp"
                 android:layout_height="81dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:autoText="true"
                 android:text="@string/currentTagDefault"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="45sp"
+                app:autoSizeMaxTextSize="45sp"
+                app:autoSizeMinTextSize="30sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,20 +61,21 @@
                 android:layout_marginTop="3dp"
                 android:background="@color/scan_bar"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_Dinner" />
+                app:layout_constraintTop_toBottomOf="@+id/id_currentTagLabel" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/id_tagSpinner"
                 android:layout_width="124dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:clickable="false"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.617"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_Dinner" />
+                app:layout_constraintTop_toBottomOf="@+id/id_currentTagLabel" />
 
             <TextView
                 android:id="@+id/textView"
@@ -80,10 +86,10 @@
                 android:gravity="center"
                 android:text="@string/tag"
                 android:textColor="@color/orange"
-                app:layout_constraintEnd_toStartOf="@+id/spinner"
+                app:layout_constraintEnd_toStartOf="@+id/id_tagSpinner"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_Dinner" />
+                app:layout_constraintTop_toBottomOf="@+id/id_currentTagLabel" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
