@@ -355,7 +355,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                             @Override
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                                 if(response.isSuccessful()){
-                                    System.out.println(response.isSuccessful());
+                                    System.out.println("HERE:" + response);
                                 }
                             }
 
