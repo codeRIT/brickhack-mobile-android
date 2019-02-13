@@ -64,7 +64,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     int VIB_SCAN_SUCCESS = 500;
     public static final String MIME_TEXT_PLAIN = "text/plain";
     public static final String TAG = "NfcDemo";
-    AuthorizationService authorizationService = new AuthorizationService(this);
+    AuthorizationService authorizationService;
 
     List<backendTag> tagList = new ArrayList<>();
     backendTag currentTag;
@@ -77,6 +77,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
         setContentView(R.layout.activity_wristband);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        authorizationService = new AuthorizationService(this);
 
         authState = restoreAuthState();
 
@@ -171,7 +172,6 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     }
 
     private void getAvailableTags(){
-        AuthorizationService authorizationService = new AuthorizationService(this);
         authState.performActionWithFreshTokens(authorizationService, new AuthState.AuthStateAction() {
             @Override
             public void execute(@Nullable final String accessToken, @Nullable String idToken, @Nullable AuthorizationException ex) {
@@ -355,12 +355,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                             @Override
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                                 if(response.isSuccessful()){
-                                    try{
-                                        //hi
-                                    }catch (NullPointerException e){
-                                        System.out.println(e);
-                                    }
-
+                                    System.out.println(response.isSuccessful());
                                 }
                             }
 
