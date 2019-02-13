@@ -37,6 +37,7 @@ import net.openid.appauth.AuthorizationException;
 import net.openid.appauth.AuthorizationService;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -63,6 +64,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     int VIB_SCAN_SUCCESS = 500;
     public static final String MIME_TEXT_PLAIN = "text/plain";
     public static final String TAG = "NfcDemo";
+    AuthorizationService authorizationService = new AuthorizationService(this);
 
     List<backendTag> tagList = new ArrayList<>();
     backendTag currentTag;
@@ -309,9 +311,66 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
         }
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(final String result) {
             if (result != null) {
-                System.out.println("Read content: " + result);
+                authState.performActionWithFreshTokens(authorizationService, new AuthState.AuthStateAction() {
+                    @Override
+                    public void execute(@Nullable final String accessToken, @Nullable String idToken, @Nullable AuthorizationException ex) {
+
+                        GsonBuilder gsonBuilder = new GsonBuilder();
+                        gsonBuilder.setLenient();
+                        Gson gson = gsonBuilder.create();
+
+                        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+                            @Override
+                            public okhttp3.Response intercept(Chain chain) throws IOException {
+                                Request newRequest  = chain.request().newBuilder()
+                                        .addHeader("Authorization", "Bearer " + accessToken)
+                                        .build();
+                                return chain.proceed(newRequest);
+                            }
+                        }).build();
+
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl("https://staging.brickhack.io")
+                                .addConverterFactory(GsonConverterFactory.create(gson))
+                                .client(client)
+                                .build();
+
+                        BrickHackAPI brickHackAPI = retrofit.create(BrickHackAPI.class);
+
+                        JSONObject trackableEvent = new JSONObject();
+                        JSONObject scan = new JSONObject();
+                        try {
+                            scan.put("band_id", result);
+                            scan.put("trackable_tag_id", currentTag.id);
+                            trackableEvent.put("trackable-event", scan);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Call<JsonElement> call = brickHackAPI.submitScan(trackableEvent);
+
+                        call.enqueue(new Callback<JsonElement>() {
+                            @Override
+                            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                                if(response.isSuccessful()){
+                                    try{
+                                        //hi
+                                    }catch (NullPointerException e){
+                                        System.out.println(e);
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<JsonElement> call, Throwable t) {
+                                System.out.println("ERROR: " + t.getMessage());
+                            }
+                        });
+                    }
+                });
             }
         }
     }
