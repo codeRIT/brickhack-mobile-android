@@ -354,6 +354,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                         call.enqueue(new Callback<JsonElement>() {
                             @Override
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                                System.out.println("ISSUE:" + response);
                                 if(response.isSuccessful()){
                                     System.out.println("HERE:" + response);
                                 }
