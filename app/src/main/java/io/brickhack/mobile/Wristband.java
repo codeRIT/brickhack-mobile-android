@@ -4,7 +4,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
+import android.nfc.Tag;
+import android.nfc.tech.Ndef;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
@@ -13,6 +18,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,10 +37,11 @@ import net.openid.appauth.AuthorizationException;
 import net.openid.appauth.AuthorizationService;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.Interceptor;
@@ -54,9 +61,11 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     private static final String SHARED_PREFERENCES_NAME = "BrickHackPreference";
     private static final String AUTH_STATE = "AUTH_STATE";
     int VIB_SCAN_SUCCESS = 500;
+    public static final String MIME_TEXT_PLAIN = "text/plain";
+    public static final String TAG = "NfcDemo";
 
-    List<Tag> tagList = new ArrayList<>();
-    Tag currentTag;
+    List<backendTag> tagList = new ArrayList<>();
+    backendTag currentTag;
 
     AuthState authState;
 
@@ -71,7 +80,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-        Tag noneTag = new Tag();
+        backendTag noneTag = new backendTag();
         noneTag.id = 0;
         noneTag.name = "None";
         tagList.add(noneTag);
@@ -81,74 +90,27 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     }
 
     @Override
-    protected void onNewIntent(Intent Intent){
+    protected void onNewIntent(Intent intent){
 
-        // Give the user haptic feedback after each success/failed scan
-        if(readyToScan){
-            Toast.makeText(this, "Scanned tag", Toast.LENGTH_LONG).show();
-            vibrate(VIB_SCAN_SUCCESS);
-        }else{
-            Toast.makeText(this, "No tag selected", Toast.LENGTH_LONG).show();
-        }
-
-        AuthorizationService authorizationService = new AuthorizationService(this);
-        authState.performActionWithFreshTokens(authorizationService, new AuthState.AuthStateAction() {
-            @Override
-            public void execute(@Nullable final String accessToken, @Nullable String idToken, @Nullable AuthorizationException ex) {
-
-                GsonBuilder gsonBuilder = new GsonBuilder();
-                gsonBuilder.setLenient();
-                Gson gson = gsonBuilder.create();
-
-                OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
-                    @Override
-                    public okhttp3.Response intercept(Chain chain) throws IOException {
-                        Request newRequest  = chain.request().newBuilder()
-                                .addHeader("Authorization", "Bearer " + accessToken)
-                                .build();
-                        return chain.proceed(newRequest);
-                    }
-                }).build();
-
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://staging.brickhack.io")
-                        .addConverterFactory(GsonConverterFactory.create(gson))
-                        .client(client)
-                        .build();
-
-                BrickHackAPI brickHackAPI = retrofit.create(BrickHackAPI.class);
-                Call<JsonElement> call = null;
-                try {
-                    call = brickHackAPI.submitScan(new JSONObject()
-                    .put("trackable-event", new JSONObject()
-                    .put("band_id", 0)
-                    .put("trackable_tag_id", currentTag.id)));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                call.enqueue(new Callback<JsonElement>() {
-                    @Override
-                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                        if(response.isSuccessful()){
-                            try{
-                                System.out.println("Tag submitted");
-                                populateSpinner();
-                            }catch (NullPointerException e){
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<JsonElement> call, Throwable t) {
-                        System.out.println("ERROR: " + t.getMessage());
-                    }
-                });
-            }
-        });
-
-        super.onNewIntent(Intent);
+        handleIntent(intent);
     }
+
+    private void handleIntent(Intent intent) {
+        String action = intent.getAction();
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
+
+            String type = intent.getType();
+            if (MIME_TEXT_PLAIN.equals(type)) {
+
+                Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+                new NdefReaderTask().execute(tag);
+
+            } else {
+                Log.d(TAG, "Wrong mime type: " + type);
+            }
+        }
+    }
+
 
     protected void vibrate(int milliseconds){
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -240,7 +202,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                                 JsonArray array = response.body().getAsJsonArray();
                                 for(int i = 0; i < array.size(); i++){
                                     JsonElement jsonObject = array.get(i);
-                                    Tag newTag = new Tag();
+                                    backendTag newTag = new backendTag();
                                     newTag.id = jsonObject.getAsJsonObject().get("id").getAsInt();
                                     newTag.name = jsonObject.getAsJsonObject().get("name").getAsString();
                                     tagList.add(newTag);
@@ -277,8 +239,78 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
         currentTag = tagList.get(i);
     }
 
+
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    /**
+     * Background task for reading the data. Do not block the UI thread while reading.
+     *
+     * @author Ralf Wondratschek
+     *
+     */
+    private class NdefReaderTask extends AsyncTask<Tag, Void, String> {
+
+        @Override
+        protected String doInBackground(Tag... params) {
+            Tag tag = params[0];
+
+            Ndef ndef = Ndef.get(tag);
+            if (ndef == null) {
+                // NDEF is not supported by this Tag.
+                return null;
+            }
+
+            NdefMessage ndefMessage = ndef.getCachedNdefMessage();
+
+            NdefRecord[] records = ndefMessage.getRecords();
+            for (NdefRecord ndefRecord : records) {
+                if (ndefRecord.getTnf() == NdefRecord.TNF_WELL_KNOWN && Arrays.equals(ndefRecord.getType(), NdefRecord.RTD_TEXT)) {
+                    try {
+                        return readText(ndefRecord);
+                    } catch (UnsupportedEncodingException e) {
+                        System.out.println("Unsupported Encoding");
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private String readText(NdefRecord record) throws UnsupportedEncodingException {
+            /*
+             * See NFC forum specification for "Text Record Type Definition" at 3.2.1
+             *
+             * http://www.nfc-forum.org/specs/
+             *
+             * bit_7 defines encoding
+             * bit_6 reserved for future use, must be 0
+             * bit_5..0 length of IANA language code
+             */
+
+            byte[] payload = record.getPayload();
+
+            // Get the Text Encoding
+            String textEncoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTF-16";
+
+            // Get the Language Code
+            int languageCodeLength = payload[0] & 0063;
+
+            // String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
+            // e.g. "en"
+
+            // Get the Text
+            return new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                System.out.println("Read content: " + result);
+            }
+        }
+    }
 }
+

@@ -2,7 +2,7 @@ package io.brickhack.mobile;
 
 import android.support.annotation.NonNull;
 
-public class Tag {
+public class backendTag {
 
     Integer id;
     String name;
