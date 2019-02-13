@@ -92,6 +92,9 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     @Override
     protected void onNewIntent(Intent intent){
 
+        vibrate(VIB_SCAN_SUCCESS);
+        Toast.makeText(this, "Scan successful",
+                Toast.LENGTH_LONG).show();
         handleIntent(intent);
     }
 
