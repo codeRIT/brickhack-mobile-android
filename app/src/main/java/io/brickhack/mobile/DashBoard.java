@@ -27,6 +27,7 @@ import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -138,7 +139,13 @@ public class DashBoard extends AppCompatActivity {
                 gsonBuilder.setLenient();
                 Gson gson = gsonBuilder.create();
 
-                OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+                HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+                logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
+
+                OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+                clientBuilder.addInterceptor(logging);
+
+                clientBuilder.addInterceptor(new Interceptor() {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {
                         Request newRequest  = chain.request().newBuilder()
@@ -146,12 +153,12 @@ public class DashBoard extends AppCompatActivity {
                                 .build();
                         return chain.proceed(newRequest);
                     }
-                }).build();
+                });
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("https://staging.brickhack.io")
                         .addConverterFactory(GsonConverterFactory.create(gson))
-                        .client(client)
+                        .client(clientBuilder.build())
                         .build();
 
                 BrickHackAPI brickHackAPI = retrofit.create(BrickHackAPI.class);
