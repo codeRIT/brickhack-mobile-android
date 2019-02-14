@@ -10,8 +10,4 @@ public class postTagFormat {
         this.trackable_event_id = trackable_event_id;
     }
 
-    @Override
-    public String toString(){
-        return "{\"trackable-event\":{\"band_id\":"+this.band_id+",\"trackable_tag_id\":"+this.trackable_event_id+"}}";
-    }
 }

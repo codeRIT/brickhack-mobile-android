@@ -357,8 +357,8 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                         postTagFormat postTagFormat = new postTagFormat(result, currentTag.id);
 
 
-                        Call<JsonElement> call = brickHackAPI.submitScan(postTagFormat.toString());
-                        System.out.println("GOT HERE");
+                        Call<JsonElement> call = brickHackAPI.submitScan(postTagFormat);
+
                         call.enqueue(new Callback<JsonElement>() {
                             @Override
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
