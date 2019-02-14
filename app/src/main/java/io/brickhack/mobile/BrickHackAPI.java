@@ -2,8 +2,6 @@ package io.brickhack.mobile;
 
 import com.google.gson.JsonElement;
 
-import org.json.JSONObject;
-
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -22,5 +20,5 @@ public interface BrickHackAPI {
     @Headers("Content-Type: application/json")
     @FormUrlEncoded
     @POST("/manage/trackable_events.json")
-    Call<JsonElement> submitScan(@Field("trackable-event") JSONObject trackableEvent);
+    Call<JsonElement> submitScan(@Field("") String trackableEvent);
 }
