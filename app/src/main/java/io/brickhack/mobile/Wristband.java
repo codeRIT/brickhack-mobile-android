@@ -48,7 +48,6 @@ import java.util.List;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -192,7 +191,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                 }).build();
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://staging.brickhack.io")
+                        .baseUrl("https://brickhack.io")
                         .addConverterFactory(GsonConverterFactory.create(gson))
                         .client(client)
                         .build();
@@ -322,11 +321,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                         gsonBuilder.setLenient();
                         Gson gson = gsonBuilder.create();
 
-                        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-                        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-
                         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
-                        clientBuilder.addInterceptor(logging);
 
                         clientBuilder.addInterceptor(new Interceptor() {
                             @Override
@@ -339,7 +334,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                         });
 
                         Retrofit retrofit = new Retrofit.Builder()
-                                .baseUrl("https://staging.brickhack.io")
+                                .baseUrl("https://brickhack.io")
                                 .addConverterFactory(GsonConverterFactory.create(gson))
                                 .client(clientBuilder.build())
                                 .build();
@@ -362,9 +357,8 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                         call.enqueue(new Callback<JsonElement>() {
                             @Override
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                                System.out.println("ISSUE:" + response);
                                 if(response.isSuccessful()){
-                                    System.out.println("HERE:" + response);
+                                    System.out.println("Success:" + response);
                                 }
                             }
 

@@ -143,7 +143,6 @@ public class DashBoard extends AppCompatActivity {
                 logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
                 OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
-                clientBuilder.addInterceptor(logging);
 
                 clientBuilder.addInterceptor(new Interceptor() {
                     @Override
@@ -156,7 +155,7 @@ public class DashBoard extends AppCompatActivity {
                 });
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://staging.brickhack.io")
+                        .baseUrl("https://brickhack.io")
                         .addConverterFactory(GsonConverterFactory.create(gson))
                         .client(clientBuilder.build())
                         .build();

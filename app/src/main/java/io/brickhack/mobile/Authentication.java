@@ -5,18 +5,15 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
-
-import io.brickhack.mobile.R;
 
 import net.openid.appauth.AuthState;
 import net.openid.appauth.AuthorizationException;
@@ -26,8 +23,6 @@ import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
 import net.openid.appauth.ResponseTypeValues;
 import net.openid.appauth.TokenResponse;
-
-import org.json.JSONException;
 
 import static io.brickhack.mobile.BrickHackSettings.LOG_TAG;
 
@@ -57,8 +52,8 @@ public class Authentication extends AppCompatActivity {
             public void onClick(View v) {
                 serviceConfig =
                         new AuthorizationServiceConfiguration(
-                                Uri.parse("https://staging.brickhack.io/oauth/authorize"), // authorization endpoint
-                                Uri.parse("https://staging.brickhack.io/oauth/token")); // token endpoint
+                                Uri.parse("https://brickhack.io/oauth/authorize"), // authorization endpoint
+                                Uri.parse("https://brickhack.io/oauth/token")); // token endpoint
 
                 getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).edit()
                         .putString(SERVICE_CONFIGURATION, serviceConfig.toJsonString())
@@ -68,7 +63,7 @@ public class Authentication extends AppCompatActivity {
                 AuthorizationRequest.Builder authRequestBuilder =
                         new AuthorizationRequest.Builder(
                                 serviceConfig, // the authorization service configuration
-                                "a46ad487beade18ee2868fb9b6a6de69950f3a5bd7b2d5eb3fb62e35f53c120e", // the client ID, typically pre-registered and static
+                                "b0a484dfaf474fdfd43ad7867d3c70fe8d76195ee565f36a29677fdbd8a168d3", // the client ID, typically pre-registered and static
                                 ResponseTypeValues.CODE, // the response_type value: we want a code
                                 redirectUri); // the redirect URI to which the auth response is sent
                 authRequestBuilder.setScopes("Access-your-bricks");
