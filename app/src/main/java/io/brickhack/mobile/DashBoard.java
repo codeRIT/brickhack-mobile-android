@@ -140,7 +140,7 @@ public class DashBoard extends AppCompatActivity {
                 Gson gson = gsonBuilder.create();
 
                 HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-                logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
+                logging.setLevel(HttpLoggingInterceptor.Level.HEADERS);
 
                 OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
                 clientBuilder.addInterceptor(logging);
