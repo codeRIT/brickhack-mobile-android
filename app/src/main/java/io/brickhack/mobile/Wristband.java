@@ -346,17 +346,15 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
 
                         BrickHackAPI brickHackAPI = retrofit.create(BrickHackAPI.class);
 
-                        JSONObject trackableEvent = new JSONObject();
                         JSONObject scan = new JSONObject();
                         try {
                             scan.put("band_id", result);
                             scan.put("trackable_tag_id", currentTag.id);
-                            trackableEvent.put("trackable-event", scan);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        Call<JsonElement> call = brickHackAPI.submitScan(trackableEvent);
+                        Call<JsonElement> call = brickHackAPI.submitScan(scan);
                         System.out.println("GOT HERE");
                         call.enqueue(new Callback<JsonElement>() {
                             @Override
