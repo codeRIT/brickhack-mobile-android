@@ -1,4 +1,4 @@
-package com.example.supportme.brick_android;
+package io.brickhack.mobile;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,21 +1,26 @@
 <resources>
-    <string name="app_name">Brick_android</string>
-    <string name="login_button">Login with brickhack.io»</string>
+    <string name="app_name">BrickHack</string>
+    <string name="login_button">LOGIN WITH BRICKHACK.IO»</string>
     <string name="logout">Logout</string>
     <string name="password">Password</string>
     <string name="wristband">Scan</string>
     <string name="history">Scan History</string>
-    <string name="attendees">Questionnaire</string>
-    <string name="dinner">Dinner</string>
-    <string name="checkedout">CHECKED-OUT</string>
-    <string name="checkedin">CHECKED-IN</string>
-    <string name="volunteers">VOLUNTEERS</string>
-    <string name="tag">CHANGE TAG</string>
+    <string name="attendees">Questionnaires</string>
+    <string name="currentTagDefault">None</string>
+    <string name="denials">DENIALS</string>
+    <string name="applications">APPLICATIONS</string>
+    <string name="confirmations">CONFIRMATIONS</string>
+    <string name="tag">Tag:</string>
     <string name="scan">Scan</string>
     <string name="history1">history</string>
     <string name="brickhack">BrickHack</string>
 
     <string name="title_activity_manage_attendees">ManageAttendees</string>
+    <string name="bhlogo_description">BrickHack Logo</string>
+    <string name="scanNotReady" />
+    <string name="denials_default">0</string>
+    <string name="applications_default">0</string>
+    <string name="confirmations_default">0</string>
 
 
 </resources>

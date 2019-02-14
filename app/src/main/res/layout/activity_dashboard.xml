@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".DashBoard">
+    tools:context="io.brickhack.mobile.DashBoard">
 
     <include
         android:id="@+id/include"
@@ -32,35 +32,36 @@
                 android:id="@+id/text_checkedout"
                 android:layout_width="84dp"
                 android:layout_height="18dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/checkedout"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/confirmations"
                 android:textAlignment="center"
-                android:textSize="12sp"
                 android:textColor="@color/orange"
+                android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/num_checkedout"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/num_confirmations"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/num_checkedout"
+                android:id="@+id/num_confirmations"
                 android:layout_width="94dp"
                 android:layout_height="60dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="52dp"
-                android:text="212"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="8dp"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/confirmations_default" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -71,34 +72,33 @@
                 android:id="@+id/text_checkedin"
                 android:layout_width="84dp"
                 android:layout_height="18dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/checkedin"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/applications"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/num_checkedin"
+                app:layout_constraintTop_toBottomOf="@+id/num_applications"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/num_checkedin"
+                android:id="@+id/num_applications"
                 android:layout_width="116dp"
                 android:layout_height="63dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
-                android:text="393"
+                android:layout_marginTop="22dp"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="50sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/applications_default" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -109,36 +109,34 @@
                 android:id="@+id/text_volunterrs"
                 android:layout_width="84dp"
                 android:layout_height="18dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/volunteers"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/denials"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/num_volunteers"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/num_denials" />
 
             <TextView
-                android:id="@+id/num_volunteers"
-                android:layout_width="91dp"
+                android:id="@+id/num_denials"
+                android:layout_width="86dp"
                 android:layout_height="60dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="52dp"
-                android:text="212"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="11dp"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/denials_default" />
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 
@@ -167,9 +165,9 @@
                 android:id="@+id/id_wristband"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/my_button_bg"
                 android:text="@string/wristband"
                 android:textColor="@color/white"
@@ -177,38 +175,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/id_history"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/my_button_bg"
-                android:text="@string/history"
-                android:textColor="@color/white"
-                android:visibility="visible"
-                app:layout_constraintBottom_toTopOf="@+id/id_attendees"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/id_wristband" />
-
-            <Button
-                android:id="@+id/id_attendees"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/my_button_bg"
-                android:text="@string/attendees"
-                android:textColor="@color/white"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
 
         </android.support.constraint.ConstraintLayout>
