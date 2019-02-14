@@ -114,8 +114,6 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     protected void onNewIntent(Intent intent){
 
         vibrate(VIB_SCAN_SUCCESS);
-        Toast.makeText(this, "Scan successful",
-                Toast.LENGTH_LONG).show();
         handleIntent(intent);
     }
 
@@ -377,6 +375,8 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                                 if(response.isSuccessful()){
                                     System.out.println("Success:" + response);
+                                    Toast.makeText(Wristband.this, "Scan successful",
+                                            Toast.LENGTH_LONG).show();
                                 }else if(response.code() == 400){
                                     AlertDialog.Builder builder = new AlertDialog.Builder(Wristband.this);
                                     builder.setMessage(R.string.unique_band_dialog_message)
