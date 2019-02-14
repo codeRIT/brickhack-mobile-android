@@ -375,13 +375,20 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                                 if(response.isSuccessful()){
                                     System.out.println("Success:" + response);
-                                    Toast.makeText(Wristband.this, "Scan successful",
-                                            Toast.LENGTH_LONG).show();
-                                }else if(response.code() == 400){
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(Wristband.this);
-                                    builder.setMessage(R.string.unique_band_dialog_message)
-                                            .setTitle(R.string.unique_band_dialog_title);
-                                    AlertDialog dialog = builder.create();
+                                }
+                                try {
+                                    if (response.body().getAsJsonObject().has("errors")) {
+                                        JsonElement errors = response.body().getAsJsonObject().get("errors");
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Wristband.this);
+                                        builder.setMessage(errors.toString())
+                                                .setTitle(R.string.error_dialog_title);
+                                        AlertDialog dialog = builder.create();
+                                    }else{
+                                        Toast.makeText(Wristband.this, "Scan successful",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                }catch (NullPointerException e){
+                                    e.printStackTrace();
                                 }
                             }
 
