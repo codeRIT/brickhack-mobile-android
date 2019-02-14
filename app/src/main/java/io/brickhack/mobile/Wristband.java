@@ -323,7 +323,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                         Gson gson = gsonBuilder.create();
 
                         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-                        logging.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+                        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
                         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
                         clientBuilder.addInterceptor(logging);
