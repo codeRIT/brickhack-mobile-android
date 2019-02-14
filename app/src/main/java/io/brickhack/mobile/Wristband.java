@@ -1,5 +1,6 @@
 package io.brickhack.mobile;
 
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -208,7 +209,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                 }).build();
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://brickhack.io")
+                        .baseUrl("https://staging.brickhack.io")
                         .addConverterFactory(GsonConverterFactory.create(gson))
                         .client(client)
                         .build();
@@ -351,7 +352,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                         });
 
                         Retrofit retrofit = new Retrofit.Builder()
-                                .baseUrl("https://brickhack.io")
+                                .baseUrl("https://staging.brickhack.io")
                                 .addConverterFactory(GsonConverterFactory.create(gson))
                                 .client(clientBuilder.build())
                                 .build();
@@ -376,6 +377,11 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                                 if(response.isSuccessful()){
                                     System.out.println("Success:" + response);
+                                }else if(response.code() == 400){
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(Wristband.this);
+                                    builder.setMessage(R.string.unique_band_dialog_message)
+                                            .setTitle(R.string.unique_band_dialog_title);
+                                    AlertDialog dialog = builder.create();
                                 }
                             }
 

@@ -22,5 +22,7 @@
     <string name="applications_default">0</string>
     <string name="confirmations_default">0</string>
 
+    <string name="unique_band_dialog_title">Scan Not Allowed</string>
+    <string name="unique_band_dialog_message">This band has already been scanned for this tag.</string>
 
 </resources>

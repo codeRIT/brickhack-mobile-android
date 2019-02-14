@@ -155,7 +155,7 @@ public class DashBoard extends AppCompatActivity {
                 });
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://brickhack.io")
+                        .baseUrl("https://staging.brickhack.io")
                         .addConverterFactory(GsonConverterFactory.create(gson))
                         .client(clientBuilder.build())
                         .build();
