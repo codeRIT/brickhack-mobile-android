@@ -78,6 +78,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         authorizationService = new AuthorizationService(this);
+        Button logout = findViewById(R.id.button_logout);
 
         authState = restoreAuthState();
 
@@ -90,6 +91,22 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
 
         getAvailableTags();
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearAuthState();
+                Intent moveToAuthentication = new Intent(Wristband.this, Authentication.class);
+                startActivity(moveToAuthentication);
+            }
+        });
+
+    }
+
+    private void clearAuthState() {
+        getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+                .edit()
+                .remove(AUTH_STATE)
+                .apply();
     }
 
     @Override
