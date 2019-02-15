@@ -1,7 +1,9 @@
 package io.brickhack.mobile;
 
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.nfc.NdefMessage;
@@ -77,6 +79,10 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
         setContentView(R.layout.activity_wristband);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Toast.makeText(Wristband.this, "Listening for bands, hold phone near band!",
+                Toast.LENGTH_LONG).show();
+
         authorizationService = new AuthorizationService(this);
         Button logout = findViewById(R.id.button_logout);
 
@@ -113,8 +119,6 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
     protected void onNewIntent(Intent intent){
 
         vibrate(VIB_SCAN_SUCCESS);
-        Toast.makeText(this, "Scan successful",
-                Toast.LENGTH_LONG).show();
         handleIntent(intent);
     }
 
@@ -376,6 +380,30 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                                 if(response.isSuccessful()){
                                     System.out.println("Success:" + response);
+                                }
+                                try {
+                                    if (response.body().getAsJsonObject().has("errors")) {
+                                        System.out.println("true");
+                                        JsonElement errors = response.body().getAsJsonObject().get("errors");
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Wristband.this);
+                                        String error_message = errors.toString();
+                                        System.out.println(errors.toString());
+                                        builder.setMessage(errors.toString())
+                                                .setTitle(R.string.error_dialog_title)
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                //clear dialog
+                                            }
+                                        });
+                                        AlertDialog dialog = builder.create();
+                                        dialog.show();
+                                    }else{
+                                        Toast.makeText(Wristband.this, "Scan successful",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                }catch (NullPointerException e){
+                                    e.printStackTrace();
                                 }
                             }
 

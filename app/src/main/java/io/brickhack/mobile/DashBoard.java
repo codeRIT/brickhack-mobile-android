@@ -1,6 +1,8 @@
 package io.brickhack.mobile;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import net.openid.appauth.AuthState;
 import net.openid.appauth.AuthorizationException;
@@ -168,14 +171,28 @@ public class DashBoard extends AppCompatActivity {
                     public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                         if(response.isSuccessful()){
                             try{
-                                JsonElement confirmations_raw = response.body().getAsJsonObject().get("Confirmations");
-                                confirmations.setText(confirmations_raw.toString());
+                                if(response.body() instanceof JsonObject){
+                                    JsonElement confirmations_raw = response.body().getAsJsonObject().get("Confirmations");
+                                    confirmations.setText(confirmations_raw.toString());
 
-                                JsonElement applications_raw = response.body().getAsJsonObject().get("Applications");
-                                applications.setText(applications_raw.toString());
+                                    JsonElement applications_raw = response.body().getAsJsonObject().get("Applications");
+                                    applications.setText(applications_raw.toString());
 
-                                JsonElement denials_raw = response.body().getAsJsonObject().get("Denials");
-                                denials.setText(denials_raw.toString());
+                                    JsonElement denials_raw = response.body().getAsJsonObject().get("Denials");
+                                    denials.setText(denials_raw.toString());
+                                }else{
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(DashBoard.this);
+                                    builder.setMessage(R.string.error_dialog_message)
+                                            .setTitle(R.string.error_dialog_title)
+                                            .setCancelable(false)
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    //clear dialog
+                                                }
+                                            });
+                                    AlertDialog dialog = builder.create();
+                                    dialog.show();
+                                }
                             }catch (NullPointerException e){
                                 System.out.println(e);
                             }
