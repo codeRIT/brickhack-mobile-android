@@ -3,6 +3,7 @@ package io.brickhack.mobile;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.nfc.NdefMessage;
@@ -156,6 +157,8 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
         IntentFilter[] intentFilters = new IntentFilter[]{};
 
         if(nfcAdapter != null && nfcAdapter.isEnabled()){
+            Toast.makeText(Wristband.this, "Listening for bands, hold phone near band!",
+                    Toast.LENGTH_LONG).show();
             nfcAdapter.enableForegroundDispatch(this, pendingIntent, intentFilters, null);
         }else{
             Toast.makeText(this, "NFC not enabled on this device", Toast.LENGTH_LONG).show();
@@ -207,7 +210,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                 }).build();
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://staging.brickhack.io")
+                        .baseUrl("https://brickhack.io")
                         .addConverterFactory(GsonConverterFactory.create(gson))
                         .client(client)
                         .build();
@@ -350,7 +353,7 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                         });
 
                         Retrofit retrofit = new Retrofit.Builder()
-                                .baseUrl("https://staging.brickhack.io")
+                                .baseUrl("https://brickhack.io")
                                 .addConverterFactory(GsonConverterFactory.create(gson))
                                 .client(clientBuilder.build())
                                 .build();
@@ -378,11 +381,21 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
                                 }
                                 try {
                                     if (response.body().getAsJsonObject().has("errors")) {
+                                        System.out.println("true");
                                         JsonElement errors = response.body().getAsJsonObject().get("errors");
                                         AlertDialog.Builder builder = new AlertDialog.Builder(Wristband.this);
+                                        String error_message = errors.toString();
+                                        System.out.println(errors.toString());
                                         builder.setMessage(errors.toString())
-                                                .setTitle(R.string.error_dialog_title);
+                                                .setTitle(R.string.error_dialog_title)
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                //clear dialog
+                                            }
+                                        });
                                         AlertDialog dialog = builder.create();
+                                        dialog.show();
                                     }else{
                                         Toast.makeText(Wristband.this, "Scan successful",
                                                 Toast.LENGTH_LONG).show();

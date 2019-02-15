@@ -52,8 +52,8 @@ public class Authentication extends AppCompatActivity {
             public void onClick(View v) {
                 serviceConfig =
                         new AuthorizationServiceConfiguration(
-                                Uri.parse("https://staging.brickhack.io/oauth/authorize"), // authorization endpoint
-                                Uri.parse("https://staging.brickhack.io/oauth/token")); // token endpoint
+                                Uri.parse("https://brickhack.io/oauth/authorize"), // authorization endpoint
+                                Uri.parse("https://brickhack.io/oauth/token")); // token endpoint
 
                 getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).edit()
                         .putString(SERVICE_CONFIGURATION, serviceConfig.toJsonString())
@@ -63,7 +63,7 @@ public class Authentication extends AppCompatActivity {
                 AuthorizationRequest.Builder authRequestBuilder =
                         new AuthorizationRequest.Builder(
                                 serviceConfig, // the authorization service configuration
-                                "a46ad487beade18ee2868fb9b6a6de69950f3a5bd7b2d5eb3fb62e35f53c120e", // the client ID, typically pre-registered and static
+                                "b0a484dfaf474fdfd43ad7867d3c70fe8d76195ee565f36a29677fdbd8a168d3", // the client ID, typically pre-registered and static
                                 ResponseTypeValues.CODE, // the response_type value: we want a code
                                 redirectUri); // the redirect URI to which the auth response is sent
                 authRequestBuilder.setScopes("Access-your-bricks");
