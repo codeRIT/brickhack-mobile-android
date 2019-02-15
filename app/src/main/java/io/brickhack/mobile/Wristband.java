@@ -79,6 +79,10 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
         setContentView(R.layout.activity_wristband);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Toast.makeText(Wristband.this, "Listening for bands, hold phone near band!",
+                Toast.LENGTH_LONG).show();
+
         authorizationService = new AuthorizationService(this);
         Button logout = findViewById(R.id.button_logout);
 
@@ -157,8 +161,6 @@ public class Wristband extends AppCompatActivity implements AdapterView.OnItemSe
         IntentFilter[] intentFilters = new IntentFilter[]{};
 
         if(nfcAdapter != null && nfcAdapter.isEnabled()){
-            Toast.makeText(Wristband.this, "Listening for bands, hold phone near band!",
-                    Toast.LENGTH_LONG).show();
             nfcAdapter.enableForegroundDispatch(this, pendingIntent, intentFilters, null);
         }else{
             Toast.makeText(this, "NFC not enabled on this device", Toast.LENGTH_LONG).show();
