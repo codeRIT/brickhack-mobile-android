@@ -1,4 +1,4 @@
-package io.brickhack.mobile;
+package io.brickhack.mobile.unused;
 
 import android.net.Uri;
 

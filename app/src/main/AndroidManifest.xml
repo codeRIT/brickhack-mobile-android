@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="io.brickhack.mobile.Authentication" android:label="@string/app_name">
+        <activity android:name="io.brickhack.mobile.unused.Authentication" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -33,9 +33,9 @@
                 <data android:scheme="brickhack"/>
             </intent-filter>
         </activity>
-        <activity android:name=".DashBoard"/>
-        <activity android:name=".Wristband"/>
-        <activity android:name=".History"/>
-        <activity android:name=".ManageAttendees"/>
+        <activity android:name=".unused.DashBoard"/>
+        <activity android:name=".unused.Wristband"/>
+        <activity android:name=".unused.History"/>
+        <activity android:name=".unused.ManageAttendees"/>
     </application>
 </manifest>

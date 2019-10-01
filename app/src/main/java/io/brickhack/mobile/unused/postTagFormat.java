@@ -1,4 +1,4 @@
-package io.brickhack.mobile;
+package io.brickhack.mobile.unused;
 
 public class postTagFormat {
 

@@ -1,10 +1,8 @@
-package io.brickhack.mobile;
+package io.brickhack.mobile.unused;
 
 import android.animation.ObjectAnimator;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,14 +15,14 @@ import android.widget.LinearLayout;
 
 import net.openid.appauth.AuthState;
 import net.openid.appauth.AuthorizationException;
-import net.openid.appauth.AuthorizationRequest;
 import net.openid.appauth.AuthorizationResponse;
 import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
-import net.openid.appauth.ResponseTypeValues;
 import net.openid.appauth.TokenResponse;
 
-import static io.brickhack.mobile.BrickHackSettings.LOG_TAG;
+import io.brickhack.mobile.R;
+
+import static io.brickhack.mobile.unused.BrickHackSettings.LOG_TAG;
 
 public class Authentication extends AppCompatActivity {
 
@@ -50,30 +48,32 @@ public class Authentication extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                serviceConfig =
-                        new AuthorizationServiceConfiguration(
-                                Uri.parse("https://brickhack.io/oauth/authorize"), // authorization endpoint
-                                Uri.parse("https://brickhack.io/oauth/token")); // token endpoint
-
-                getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).edit()
-                        .putString(SERVICE_CONFIGURATION, serviceConfig.toJsonString())
-                        .commit();
-
-                Uri redirectUri = Uri.parse("brickhack://oauth/callback");
-                AuthorizationRequest.Builder authRequestBuilder =
-                        new AuthorizationRequest.Builder(
-                                serviceConfig, // the authorization service configuration
-                                "b0a484dfaf474fdfd43ad7867d3c70fe8d76195ee565f36a29677fdbd8a168d3", // the client ID, typically pre-registered and static
-                                ResponseTypeValues.CODE, // the response_type value: we want a code
-                                redirectUri); // the redirect URI to which the auth response is sent
-                authRequestBuilder.setScopes("Access-your-bricks");
-                AuthorizationRequest request = authRequestBuilder.build();
-
-                AuthorizationService authorizationService = new AuthorizationService(v.getContext());
-                String action = "io.brickhack.mobile.appauth.HANDLE_AUTHORIZATION_RESPONSE";
-                Intent postAuthorizationIntent = new Intent(action);
-                PendingIntent pendingIntent = PendingIntent.getActivity(v.getContext(), request.hashCode(), postAuthorizationIntent, 0);
-                authorizationService.performAuthorizationRequest(request, pendingIntent);
+                Intent moveToDashboard = new Intent(Authentication.this, DashBoard.class);
+                startActivity(moveToDashboard);
+//                serviceConfig =
+//                        new AuthorizationServiceConfiguration(
+//                                Uri.parse("https://brickhack.io/oauth/authorize"), // authorization endpoint
+//                                Uri.parse("https://brickhack.io/oauth/token")); // token endpoint
+//
+//                getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).edit()
+//                        .putString(SERVICE_CONFIGURATION, serviceConfig.toJsonString())
+//                        .commit();
+//
+//                Uri redirectUri = Uri.parse("brickhack://oauth/callback");
+//                AuthorizationRequest.Builder authRequestBuilder =
+//                        new AuthorizationRequest.Builder(
+//                                serviceConfig, // the authorization service configuration
+//                                "b0a484dfaf474fdfd43ad7867d3c70fe8d76195ee565f36a29677fdbd8a168d3", // the client ID, typically pre-registered and static
+//                                ResponseTypeValues.CODE, // the response_type value: we want a code
+//                                redirectUri); // the redirect URI to which the auth response is sent
+//                authRequestBuilder.setScopes("Access-your-bricks");
+//                AuthorizationRequest request = authRequestBuilder.build();
+//
+//                AuthorizationService authorizationService = new AuthorizationService(v.getContext());
+//                String action = "io.brickhack.mobile.appauth.HANDLE_AUTHORIZATION_RESPONSE";
+//                Intent postAuthorizationIntent = new Intent(action);
+//                PendingIntent pendingIntent = PendingIntent.getActivity(v.getContext(), request.hashCode(), postAuthorizationIntent, 0);
+//                authorizationService.performAuthorizationRequest(request, pendingIntent);
             }
         });
     }

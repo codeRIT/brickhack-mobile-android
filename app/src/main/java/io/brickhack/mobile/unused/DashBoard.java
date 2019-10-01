@@ -1,4 +1,4 @@
-package io.brickhack.mobile;
+package io.brickhack.mobile.unused;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -27,6 +27,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
+import io.brickhack.mobile.R;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -63,7 +64,7 @@ public class DashBoard extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        fetchTodayStats();
+//        fetchTodayStats();
 
         wristband.setOnClickListener(new View.OnClickListener() {
             @Override

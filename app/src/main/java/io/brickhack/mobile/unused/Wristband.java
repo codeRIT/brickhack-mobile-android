@@ -1,4 +1,4 @@
-package io.brickhack.mobile;
+package io.brickhack.mobile.unused;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -47,6 +47,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.brickhack.mobile.R;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
