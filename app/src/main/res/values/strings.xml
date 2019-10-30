@@ -15,6 +15,9 @@
     <string name="history1">history</string>
     <string name="brickhack">BrickHack</string>
 
+    <string name="facebook_app_id">2500640956722703</string>
+    <string name="fb_login_protocol_scheme">fb2500640956722703</string>
+
     <string name="title_activity_manage_attendees">ManageAttendees</string>
     <string name="bhlogo_description">BrickHack Logo</string>
     <string name="scanNotReady" />
