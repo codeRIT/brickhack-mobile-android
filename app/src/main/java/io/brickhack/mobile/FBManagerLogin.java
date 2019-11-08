@@ -3,10 +3,9 @@ package io.brickhack.mobile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.facebook.*;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -14,7 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
-public class FBManagerLogin extends AppCompatActivity{
+public class FBManagerLogin extends AppCompatActivity {
     private CallbackManager callbackManager;
     private LoginButton loginButton;
     private TextView displayName, emailID;
