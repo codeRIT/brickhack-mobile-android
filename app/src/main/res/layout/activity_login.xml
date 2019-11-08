@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#374251"
+    tools:context=".Activities.LoginActivity">
+
+    <ImageView
+        android:id="@+id/id_logo"
+        android:layout_width="match_parent"
+        android:layout_height="198dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/brickhack_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009"
+        android:src="@drawable/hack_logo_v6"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/brickhack_date"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/id_logo"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/brickhack_location"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="8dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/sign_in"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:layout_editor_absoluteX="117dp" />
+
+    <Button
+        android:id="@+id/id_logo_button"
+        android:layout_width="300dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/login"
+        android:textAllCaps="true"
+        android:background="@android:color/holo_orange_dark"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_logo"
+        app:layout_constraintVertical_bias="0.815" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
