@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-                                             android:background="@color/background"
-                                             android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".FBManagerLogin">
+    <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/image_view"
+            tools:src="@mipmap/ic_launcher"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+    <TextView
+            android:layout_below="@+id/image_view"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:id="@+id/display_name"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content" />
+    <TextView
+            android:layout_below="@id/display_name"
+            android:layout_width="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/email"
+            android:layout_height="wrap_content" />
     <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            tools:layout_editor_absoluteY="330dp" tools:layout_editor_absoluteX="109dp"
-            tools:ignore="MissingConstraints"/>
-</android.support.constraint.ConstraintLayout>
+            android:layout_centerInParent="true" />
+</RelativeLayout>
