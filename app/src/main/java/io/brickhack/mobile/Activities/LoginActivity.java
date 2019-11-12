@@ -1,9 +1,5 @@
 package io.brickhack.mobile.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +7,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import net.openid.appauth.AuthState;
 import net.openid.appauth.AuthorizationException;
@@ -21,13 +22,11 @@ import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
 import net.openid.appauth.ResponseTypeValues;
 
-import io.brickhack.mobile.MainActivity;
 import io.brickhack.mobile.R;
-import io.brickhack.mobile.Settings;
+import io.brickhack.mobile.Utils.Settings;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button login;
     AuthorizationServiceConfiguration serviceConfiguration;
     public static final String LOG_TAG = "MainActivity";
     private static final String USED_INTENT = "USED_INTENT";
@@ -38,11 +37,19 @@ public class LoginActivity extends AppCompatActivity {
     Settings settings = new Settings();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        login = findViewById(R.id.id_logo_button);
+        Button login = findViewById(R.id.id_logo_button);
+        TextView forget = findViewById(R.id.forget);
+
+        forget.setOnClickListener(view -> {
+            Toast.makeText(this, "Redireting to brickhack.io", Toast.LENGTH_SHORT).show();
+        });
+
+
 
         login.setOnClickListener(view -> {
             Toast.makeText(this, "Login clicked", Toast.LENGTH_SHORT).show();
