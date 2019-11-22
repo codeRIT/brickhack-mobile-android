@@ -1,3 +1,5 @@
+/*
+
 package io.brickhack.mobile;
 
 
@@ -32,10 +34,12 @@ public class FBManagerLogin extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         // Registering CallbackManager with the LoginButton
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // Retrieving access token using the LoginResult
                 AccessToken accessToken = loginResult.getAccessToken();
+                displayName.setText("getting access");
                 useLoginInformation(accessToken);
             }
             @Override
@@ -43,6 +47,7 @@ public class FBManagerLogin extends AppCompatActivity {
             }
             @Override
             public void onError(FacebookException error) {
+                displayName.setText("hello World");
             }
         });
     }
@@ -59,6 +64,7 @@ public class FBManagerLogin extends AppCompatActivity {
          1st Param - AccessToken
          2nd Param - Callback (which will be invoked once the request is successful)
          **/
+/**
         GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
             //OnCompleted is invoked once the GraphRequest is successful
             @Override
@@ -69,6 +75,7 @@ public class FBManagerLogin extends AppCompatActivity {
                     String image = object.getJSONObject("picture").getJSONObject("data").getString("url");
                     displayName.setText(name);
                     emailID.setText(email);
+                    System.out.println("hello");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -84,5 +91,5 @@ public class FBManagerLogin extends AppCompatActivity {
 
     }
 }
-
+**/
 
