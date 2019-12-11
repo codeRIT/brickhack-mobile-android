@@ -11,9 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import io.brickhack.mobile.MainActivity;
 import io.brickhack.mobile.R;
 import io.brickhack.mobile.Settings;
+import io.brickhack.mobile.resourcesPage;
 import net.openid.appauth.*;
 
 public class LoginActivity extends AppCompatActivity {
@@ -36,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.id_logo_button);
 
         login.setOnClickListener(view -> {
+
+
             Toast.makeText(this, "Login clicked", Toast.LENGTH_SHORT).show();
             serviceConfiguration =
                     new AuthorizationServiceConfiguration(
@@ -85,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                         // TODO: 2019-10-27
                             persistAuthState(authState);
 //                            // Let the user continue
-                        Intent moveToDashboard = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent moveToDashboard = new Intent(LoginActivity.this, resourcesPage.class);
                         startActivity(moveToDashboard);
                     }
                 }
