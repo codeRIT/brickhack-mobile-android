@@ -43,7 +43,7 @@
                 <data android:scheme="brickhack"/>
             </intent-filter>
         </activity>
-
+        <!--
         <activity android:name=".FBManagerLogin"/>
         <meta-data android:name="com.facebook.sdk.ApplicationId"
                    android:value="@string/facebook_app_id"/>
@@ -62,7 +62,9 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        -->
         <activity android:name=".MainActivity"/>
+        <activity android:name=".resourcesPage"/>
         <!--<activity android:name=".unused.DashBoard" />-->
         <!--<activity android:name=".unused.Wristband" />-->
         <!--<activity android:name=".unused.History" />-->

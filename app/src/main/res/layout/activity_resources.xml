@@ -19,19 +19,36 @@
 
 
 
+    <Button
+            android:id="@+id/button1"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="220dp"
+            android:layout_centerHorizontal = "true"
+            android:background="@drawable/roundedbutton"
+            android:drawableStart="@drawable/slack"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="Slack"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
     <Button
-            android:text="Slack"
-            android:layout_width="wrap_content"
-            android:id="@+id/button1"
-            android:layout_centerHorizontal = "true"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="220dp"/>
-    <Button
-            android:text="DevPost"
-            android:layout_width="wrap_content"
             android:id="@+id/button2"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
             android:layout_centerHorizontal = "true"
+            android:background="@drawable/roundedbutton"
+            android:drawableStart="@drawable/devpost"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="Devpost"
             android:layout_below="@id/button1"
-            android:layout_height="wrap_content" android:layout_marginTop="50dp"/>
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 </RelativeLayout>
