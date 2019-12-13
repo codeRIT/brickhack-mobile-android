@@ -17,7 +17,7 @@ public class resourcesPage extends AppCompatActivity {
         SlackButton = findViewById(R.id.button1);
         DevPostButton = findViewById(R.id.button2);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setTitleToolbar(toolbar, "Resources");
+        setTitleToolbar(toolbar, "  Resources");
         toolbar.setLogo(R.drawable.ic_hack);
 
         SlackButton.setOnClickListener(new View.OnClickListener() {
