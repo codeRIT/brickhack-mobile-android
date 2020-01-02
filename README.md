@@ -1,5 +1,6 @@
 # brickhack-mobile-android
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/5df2fd929e83a42a1301/maintainability)](https://codeclimate.com/github/codeRIT/brickhack-mobile-android/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5df2fd929e83a42a1301/test_coverage)](https://codeclimate.com/github/codeRIT/brickhack-mobile-android/test_coverage)
 
 The app for managing attendees for BrickHack.
