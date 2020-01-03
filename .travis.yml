@@ -1,3 +1,4 @@
+install: gradle wrapper --gradle-version 4.10.1
 language: java
 dist: trusty
 android:
