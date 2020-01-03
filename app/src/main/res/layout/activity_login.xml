@@ -36,8 +36,9 @@
         app:layout_constraintTop_toBottomOf="@+id/id_logo"
         tools:layout_editor_absoluteX="0dp" />
 
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/forget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -52,14 +53,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/sign_in"
-        android:textSize="25sp"
+        android:layout_marginBottom="152dp"
         android:gravity="center"
+        android:text="@string/sign_in"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:layout_editor_absoluteX="117dp" />
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/id_logo_button"
+        app:layout_constraintTop_toBottomOf="@+id/id_logo_button"
+        app:layout_constraintVertical_bias="0.962"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/id_logo_button"
@@ -68,10 +70,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="44dp"
+        android:background="@android:color/holo_orange_dark"
         android:text="@string/login"
         android:textAllCaps="true"
-        android:background="@android:color/holo_orange_dark"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:visibility="visible"
@@ -79,7 +81,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_logo"
-        app:layout_constraintVertical_bias="0.815" />
+        app:layout_constraintVertical_bias="0.698" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="159dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="179dp"
+        android:layout_marginBottom="86dp"
+        android:text="@string/forget_password"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_logo_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

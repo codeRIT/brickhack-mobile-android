@@ -33,7 +33,7 @@
     <string name="brickhack_location">Gordon Field House, RIT</string>
     <string name="username">Username</string>
     <string name="sign_in">Sign in</string>
-    <string name="login">login</string>
+    <string name="login">Signin with brickhack.io</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -49,6 +49,9 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_maps">Map</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="welcome">Welcome,</string>
+    <string name="placeholder_name">PlaceHolder Name</string>
 
 
 </resources>
