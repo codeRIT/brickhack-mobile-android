@@ -9,21 +9,12 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import net.openid.appauth.AuthState;
-import net.openid.appauth.AuthorizationException;
-import net.openid.appauth.AuthorizationRequest;
-import net.openid.appauth.AuthorizationResponse;
-import net.openid.appauth.AuthorizationService;
-import net.openid.appauth.AuthorizationServiceConfiguration;
-import net.openid.appauth.ResponseTypeValues;
-
 import io.brickhack.mobile.R;
 import io.brickhack.mobile.Utils.Settings;
+import net.openid.appauth.*;
 
 public class LoginActivity extends AppCompatActivity {
 

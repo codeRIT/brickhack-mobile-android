@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="#374251">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                app:titleTextColor="@android:color/white"
+                android:background="#37425F"/>
+    </LinearLayout>
+
+
+
+    <Button
+            android:id="@+id/button1"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="220dp"
+            android:layout_centerHorizontal = "true"
+            android:background="@drawable/roundedbutton"
+            android:drawableStart="@drawable/slack"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="Slack"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    <Button
+            android:id="@+id/button2"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal = "true"
+            android:background="@drawable/roundedbutton"
+            android:drawableStart="@drawable/devpost"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="Devpost"
+            android:layout_below="@id/button1"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+</RelativeLayout>
