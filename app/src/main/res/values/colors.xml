@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="title_bar_color">#47525f</color>
+    <color name="cream">#F6F5F3</color>
+    <color name="orange">#F58625</color>
+    <color name="navyDenim">#374251</color>
+
+    <color name="title_bar_color">@color/navyDenim</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="orange">#ea8d41</color>
     <color name="background">#374352</color>
     <color name="white">#ffffff</color>
     <color name="scan_bar">#759e9e9e</color>
 </resources>
+

@@ -2,7 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
 
     </style>
 
@@ -10,7 +9,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="toolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">@color/title_bar_color</item>
+        <item name="android:background">@color/navyDenim</item>
 
     </style>
 

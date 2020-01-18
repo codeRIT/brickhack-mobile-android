@@ -2,9 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="io.brickhack.mobile">
+
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-feature android:name="android.hardware.nfc" android:required="true"/>
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,15 +19,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="io.brickhack.mobile.Authentication" android:label="@string/app_name">
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-                <action android:name="io.brickhack.mobile.appauth.HANDLE_AUTHORIZATION_RESPONSE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="brickhack"/>
+                <action android:name="io.brickhack.mobile.appauth.HANDLE_AUTHORIZATION_RESPONSE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="brickhack" />
             </intent-filter>
         </activity>
         <activity android:name="net.openid.appauth.RedirectUriReceiverActivity">
@@ -33,9 +43,31 @@
                 <data android:scheme="brickhack"/>
             </intent-filter>
         </activity>
-        <activity android:name=".DashBoard"/>
-        <activity android:name=".Wristband"/>
-        <activity android:name=".History"/>
-        <activity android:name=".ManageAttendees"/>
+        <!--
+        <activity android:name=".FBManagerLogin"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+                   android:value="@string/facebook_app_id"/>
+
+        <activity android:name="com.facebook.FacebookActivity"
+                  android:configChanges=
+                          "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                  android:label="@string/app_name" />
+        <activity
+                android:name="com.facebook.CustomTabActivity"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        -->
+        <activity android:name=".Activities.MainActivity"/>
+        <!--<activity android:name=".unused.DashBoard" />-->
+        <!--<activity android:name=".unused.Wristband" />-->
+        <!--<activity android:name=".unused.History" />-->
+        <!--<activity android:name=".unused.ManageAttendees" />-->
     </application>
+
 </manifest>
