@@ -1,4 +1,11 @@
 <resources>
+
+    <!-- Titles -->
+    <string name="title_login">Welcome to BrickHack 6</string>
+
+    <!-- Buttons -->
+    <string name="btn_login">Login with brickhack.io</string>
+
     <string name="app_name">BrickHack</string>
     <string name="login_button">LOGIN WITH BRICKHACK.IO»</string>
     <string name="logout">Logout</string>

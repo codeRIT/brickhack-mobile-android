@@ -33,9 +33,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Button login = findViewById(R.id.id_logo_button);
-        TextView forget = findViewById(R.id.forget);
+        //Button login = findViewById(R.id.id_logo_button);
+        //TextView forget = findViewById(R.id.forget);
 
+        /*
         forget.setOnClickListener(view -> {
             Toast.makeText(this, "Redireting to brickhack.io", Toast.LENGTH_SHORT).show();
         });
@@ -72,6 +73,8 @@ public class LoginActivity extends AppCompatActivity {
             authorizationService.performAuthorizationRequest(request, pendingIntent);
 
         });
+
+         */
     }
 
     private void handleAuthorizationResponse(@NonNull Intent intent) {
