@@ -13,4 +13,37 @@
 
     </style>
 
+    <!-- styles for schedule page -->
+    <style name="schedule">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#F58625</item>
+    </style>
+    <!-- style for profileName -->
+    <style name="profileName">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#384859</item>
+    </style>
+    <!-- style for university name -->
+    <style name="university">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#384859</item>
+    </style>
+
+    <!-- style for the schedule time -->
+    <style name="time">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#F58625</item>
+    </style>
+
+    <!-- style for the events in the schedule -->
+    <style name="eventsStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#6F6F6F</item>
+    </style>
+
+    <!-- style for the events in the schedule -->
+    <style name="location">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#6F6F6F</item>
+    </style>
 </resources>

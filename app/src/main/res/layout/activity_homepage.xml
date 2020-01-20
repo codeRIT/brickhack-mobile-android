@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <!-- Schedule -->
+    <TextView
+            android:id="@+id/schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/attendee_im"
+            android:layout_marginStart="33dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="125dp"
+            android:text="@string/schedule"
+            android:textAppearance="@style/schedule"
+            android:gravity="top"
+    />
+
+    <!-- Attendee Image -->
+    <View
+            android:id="@+id/attendee_im"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="33dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="38dp"
+            android:background="@drawable/attendee_im"
+    />
+
+    <!-- profile name -->
+    <TextView
+            android:id="@+id/HomePageName"
+            android:layout_width="121dp"
+            android:layout_height="18dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="94dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="41dp"
+            android:text="Place Holder"
+            android:textAppearance="@style/profileName"
+            android:gravity="top"
+    />
+
+    <!-- University -->
+    <TextView
+            android:id="@+id/university_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="94dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="60dp"
+            android:text="Place Holder University"
+            android:textAppearance="@style/university"
+            android:gravity="top"
+    />
+
+    <!-- start time -->
+    <TextView
+            android:id="@+id/pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="33dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="188dp"
+            android:text="9pm"
+            android:textAppearance="@style/time"
+            android:gravity="top"
+    />
+
+    <!-- Line -->
+    <View
+            android:id="@+id/line_1"
+            android:rotationY="180"
+            android:layout_width="122dp"
+            android:layout_height="10dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="49dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="227dp"
+            android:background="@drawable/line"
+    />
+
+    <!-- event1 -->
+    <TextView
+            android:id="@+id/insomnia_co"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="98dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="227dp"
+            android:text="place Holder"
+            android:textAppearance="@style/eventsStyle"
+            android:gravity="top"
+    />
+
+    <!-- Location -->
+    <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="98dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="253dp"
+            android:text="location"
+            android:textAppearance="@style/location"
+            android:gravity="top"
+    />
+    </RelativeLayout>
