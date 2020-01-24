@@ -58,58 +58,93 @@
             android:gravity="top"
     />
 
-    <!-- start time -->
-    <TextView
-            android:id="@+id/pm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="33dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="188dp"
-            android:text="9pm"
-            android:textAppearance="@style/time"
-            android:gravity="top"
-    />
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <!-- layout for the first event -->
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <!-- Line -->
-    <View
-            android:id="@+id/line_1"
-            android:rotationY="180"
-            android:layout_width="122dp"
-            android:layout_height="10dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="49dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="227dp"
-            android:background="@drawable/line"
-    />
+            <!-- start time -->
+            <TextView
+                    android:id="@+id/pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="188dp"
+                    android:text="9pm"
+                    android:textAppearance="@style/time"
+                    android:gravity="top"
+            />
 
-    <!-- event1 -->
-    <TextView
-            android:id="@+id/insomnia_co"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="98dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="227dp"
-            android:text="place Holder"
-            android:textAppearance="@style/eventsStyle"
-            android:gravity="top"
-    />
 
-    <!-- Location -->
-    <TextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="98dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="253dp"
-            android:text="location"
-            android:textAppearance="@style/location"
-            android:gravity="top"
-    />
-    </RelativeLayout>
+            <View
+                    android:id="@+id/event1_ball"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="45.8dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="218dp"
+                    android:background="@drawable/ball"
+            />
+
+            <!-- Line -->
+            <View
+                    android:id="@+id/line_1"
+                    android:rotation="90"
+                    android:layout_width="60dp"
+                    android:layout_height="10dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="250dp"
+                    android:background="@drawable/line"
+            />
+
+            <!-- event1 -->
+            <TextView
+                    android:id="@+id/insomnia_co"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="227dp"
+                    android:text="place Holder"
+                    android:textAppearance="@style/eventsStyle"
+                    android:gravity="top"
+            />
+
+            <!-- Location -->
+            <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="253dp"
+                    android:text="location"
+                    android:textAppearance="@style/location"
+                    android:gravity="top"
+            />
+
+            <!-- Star  -->
+            <ImageButton
+                    android:id="@+id/favorite_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/btn_star"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="200dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="253dp"
+                    android:background="#00ffffff" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
