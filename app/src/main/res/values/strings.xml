@@ -59,6 +59,10 @@
     <string name="forget_password">Forget Password</string>
     <string name="welcome">Welcome,</string>
     <string name="placeholder_name">PlaceHolder Name</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_school">School</string>
+    <string name="hint_email">Email</string>
 
 
 </resources>

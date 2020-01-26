@@ -14,5 +14,6 @@ public interface BrickHackAPI {
     @GET("/manage/questionnaires/{id}.json")
     Call<JsonElement> getUser(@Path("id") String userid);
 
-
+    @GET("/manage/schools/{id}.json")
+    Call<JsonElement> getSchool(@Path("id") String schoolID);
 }

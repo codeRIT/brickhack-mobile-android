@@ -7,14 +7,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import net.openid.appauth.AuthState;
+import net.openid.appauth.AuthorizationException;
+import net.openid.appauth.AuthorizationRequest;
+import net.openid.appauth.AuthorizationResponse;
+import net.openid.appauth.AuthorizationService;
+import net.openid.appauth.AuthorizationServiceConfiguration;
+import net.openid.appauth.ResponseTypeValues;
+
 import io.brickhack.mobile.R;
 import io.brickhack.mobile.Utils.Settings;
-import net.openid.appauth.*;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,13 +41,18 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //Button login = findViewById(R.id.id_logo_button);
+        Button login = findViewById(R.id.id_logo_button);
+
+//        login.setOnClickListener(view -> {
+//            startActivity(new Intent(this, ProfileActivity.class));
+//        });
+
         //TextView forget = findViewById(R.id.forget);
 
-        /*
-        forget.setOnClickListener(view -> {
-            Toast.makeText(this, "Redireting to brickhack.io", Toast.LENGTH_SHORT).show();
-        });
+//
+//        forget.setOnClickListener(view -> {
+//            Toast.makeText(this, "Redireting to brickhack.io", Toast.LENGTH_SHORT).show();
+//        });
 
 
 
@@ -47,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Login clicked", Toast.LENGTH_SHORT).show();
             serviceConfiguration =
                     new AuthorizationServiceConfiguration(
-                            Uri.parse("https://apply.brickhack.io/oauth/authorize"), // authorization endpoint
-                            Uri.parse("https://apply.brickhack.io/oauth/token")); // token endpoint
+                            Uri.parse("https://hm.baudouin.io/oauth/authorize"), // authorization endpoint
+                            Uri.parse("https://hm.baudouin.io/oauth/token")); // token endpoint
 
             getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE).edit()
                     .putString(SERVICE_CONFIGURATION, serviceConfiguration.toJsonString())
@@ -73,8 +86,6 @@ public class LoginActivity extends AppCompatActivity {
             authorizationService.performAuthorizationRequest(request, pendingIntent);
 
         });
-
-         */
     }
 
     private void handleAuthorizationResponse(@NonNull Intent intent) {
@@ -92,9 +103,8 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     if (tokenResponse != null) {
                         authState.update(tokenResponse, exception);
-                        // TODO: 2019-10-27
                             persistAuthState(authState);
-//                            // Let the user continue
+                        // Let the user continue
                         Intent moveToDashboard = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(moveToDashboard);
                     }
@@ -144,7 +154,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    // TODO: 2019-10-27 i'm not sure if this works 
     @Override
     public void onBackPressed() {
         this.finishAffinity();
