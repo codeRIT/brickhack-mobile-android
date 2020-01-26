@@ -1,6 +1,7 @@
 package io.brickhack.mobile.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -190,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
                     JsonElement first = response.body().getAsJsonObject().get("first_name");
                     // JsonElement last = response.body().getAsJsonObject().get("last_name");
                     username.setText(first.toString());
+                    Intent moveToDashboard = new Intent(MainActivity.this, HomePage.class);
 
                 } else {
                     Toast.makeText(MainActivity.this, "Not success", Toast.LENGTH_LONG).show();

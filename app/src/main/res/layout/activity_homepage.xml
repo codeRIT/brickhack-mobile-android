@@ -60,15 +60,19 @@
 
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/schedule"
+            >
         <!-- layout for the first event -->
         <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/schedule"
+                android:layout_marginTop="-170dp">
 
             <!-- start time -->
             <TextView
-                    android:id="@+id/pm"
+                    android:id="@+id/event1_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -86,34 +90,35 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="45.8dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="218dp"
+                    android:layout_marginStart="42.2dp"
+                    android:layout_alignTop="@+id/event1_time"
+                    android:layout_marginTop="35dp"
                     android:background="@drawable/ball"
             />
+
 
             <!-- Line -->
             <View
                     android:id="@+id/line_1"
                     android:rotation="90"
-                    android:layout_width="60dp"
-                    android:layout_height="10dp"
+                    android:layout_width="40.5dp"
+                    android:layout_height="1dp"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="250dp"
+                    android:layout_marginStart="26dp"
+                    android:layout_alignTop="@+id/event1_ball"
+                    android:layout_marginTop="27dp"
                     android:background="@drawable/line"
             />
 
             <!-- event1 -->
             <TextView
-                    android:id="@+id/insomnia_co"
+                    android:id="@+id/event1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="98dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="227dp"
+                    android:layout_alignTop="@+id/event1_ball"
+                    android:layout_marginTop="0dp"
                     android:text="place Holder"
                     android:textAppearance="@style/eventsStyle"
                     android:gravity="top"
@@ -121,13 +126,12 @@
 
             <!-- Location -->
             <TextView
-                    android:id="@+id/location"
+                    android:id="@+id/event1_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="98dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="253dp"
+                    android:layout_below="@+id/event1"
                     android:text="location"
                     android:textAppearance="@style/location"
                     android:gravity="top"
@@ -135,16 +139,672 @@
 
             <!-- Star  -->
             <ImageButton
-                    android:id="@+id/favorite_button"
+                    android:id="@+id/event1_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@android:drawable/btn_star"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="200dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="253dp"
-                    android:background="#00ffffff" />
+                    android:src="@drawable/star"
+                    android:background="#00ffffff"
+                    android:onClick="onToggleStar1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_alignTop="@+id/event1"/>
 
+
+        <!-- layout for the second event -->
+            <!-- start time -->
+            <TextView
+                    android:id="@+id/event2_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="280dp"
+                    android:text="12pm"
+                    android:textAppearance="@style/time"
+                    android:gravity="top"
+            />
+
+
+            <View
+                    android:id="@+id/event2_ball"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42.2dp"
+                    android:layout_alignTop="@+id/event2_time"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/ball"
+            />
+
+
+            <!-- Line -->
+            <View
+                    android:id="@+id/line_2"
+                    android:rotation="90"
+                    android:layout_width="40.5dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="26dp"
+                    android:layout_alignTop="@+id/event2_ball"
+                    android:layout_marginTop="27dp"
+                    android:background="@drawable/line"
+            />
+
+            <!-- event2 -->
+            <TextView
+                    android:id="@+id/event2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignTop="@+id/event2_ball"
+                    android:layout_marginTop="0dp"
+                    android:text="place Holder"
+                    android:textAppearance="@style/eventsStyle"
+                    android:gravity="top"
+            />
+
+            <!-- Location -->
+            <TextView
+                    android:id="@+id/event2_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_below="@+id/event2"
+                    android:text="location"
+                    android:textAppearance="@style/location"
+                    android:gravity="top"
+            />
+
+            <!-- Star  -->
+            <ImageButton
+                    android:id="@+id/event2_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:background="#00ffffff"
+                    android:onClick="onToggleStar2"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_alignTop="@+id/event2"/>
+
+
+        <!-- layout for the third event -->
+            <!-- start time -->
+            <TextView
+                    android:id="@+id/event3_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="372dp"
+                    android:text="7am"
+                    android:textAppearance="@style/time"
+                    android:gravity="top"
+            />
+
+
+            <View
+                    android:id="@+id/event3_ball"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42.2dp"
+                    android:layout_alignTop="@+id/event3_time"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/ball"
+            />
+
+
+            <!-- Line -->
+            <View
+                    android:id="@+id/line_3"
+                    android:rotation="90"
+                    android:layout_width="40.5dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="26dp"
+                    android:layout_alignTop="@+id/event3_ball"
+                    android:layout_marginTop="27dp"
+                    android:background="@drawable/line"
+            />
+
+            <!-- event3 -->
+            <TextView
+                    android:id="@+id/event3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignTop="@+id/event3_ball"
+                    android:layout_marginTop="0dp"
+                    android:text="place Holder"
+                    android:textAppearance="@style/eventsStyle"
+                    android:gravity="top"
+            />
+
+            <!-- Location -->
+            <TextView
+                    android:id="@+id/event3_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_below="@+id/event3"
+                    android:text="location"
+                    android:textAppearance="@style/location"
+                    android:gravity="top"
+            />
+
+            <!-- Star  -->
+            <ImageButton
+                    android:id="@+id/event3_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:background="#00ffffff"
+                    android:onClick="onToggleStar3"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_alignTop="@+id/event3"/>
+
+
+        <!-- layout for the 4th event -->
+            <!-- start time -->
+            <TextView
+                    android:id="@+id/event4_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="464dp"
+                    android:text="8am"
+                    android:textAppearance="@style/time"
+                    android:gravity="top"
+            />
+
+
+            <View
+                    android:id="@+id/event4_ball"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42.2dp"
+                    android:layout_alignTop="@+id/event4_time"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/ball"
+            />
+
+
+            <!-- Line -->
+            <View
+                    android:id="@+id/line_4"
+                    android:rotation="90"
+                    android:layout_width="40.5dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="26dp"
+                    android:layout_alignTop="@+id/event4_ball"
+                    android:layout_marginTop="27dp"
+                    android:background="@drawable/line"
+            />
+
+            <!-- event4 -->
+            <TextView
+                    android:id="@+id/event4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignTop="@+id/event4_ball"
+                    android:layout_marginTop="0dp"
+                    android:text="place Holder"
+                    android:textAppearance="@style/eventsStyle"
+                    android:gravity="top"
+            />
+
+            <!-- Location -->
+            <TextView
+                    android:id="@+id/event4_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_below="@+id/event4"
+                    android:text="location"
+                    android:textAppearance="@style/location"
+                    android:gravity="top"
+            />
+
+            <!-- Star  -->
+            <ImageButton
+                    android:id="@+id/event4_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:background="#00ffffff"
+                    android:onClick="onToggleStar4"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_alignTop="@+id/event4"/>
+
+        <!-- layout for the 5th event -->
+            <!-- start time -->
+            <TextView
+                    android:id="@+id/event5_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="556dp"
+                    android:text="11am"
+                    android:textAppearance="@style/time"
+                    android:gravity="top"
+            />
+
+
+            <View
+                    android:id="@+id/event5_ball"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42.2dp"
+                    android:layout_alignTop="@+id/event5_time"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/ball"
+            />
+
+
+            <!-- Line -->
+            <View
+                    android:id="@+id/line_5"
+                    android:rotation="90"
+                    android:layout_width="40.5dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="26dp"
+                    android:layout_alignTop="@+id/event5_ball"
+                    android:layout_marginTop="27dp"
+                    android:background="@drawable/line"
+            />
+
+            <!-- event5 -->
+            <TextView
+                    android:id="@+id/event5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignTop="@+id/event5_ball"
+                    android:layout_marginTop="0dp"
+                    android:text="place Holder"
+                    android:textAppearance="@style/eventsStyle"
+                    android:gravity="top"
+            />
+
+            <!-- Location -->
+            <TextView
+                    android:id="@+id/event5_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_below="@+id/event5"
+                    android:text="location"
+                    android:textAppearance="@style/location"
+                    android:gravity="top"
+            />
+
+            <!-- Star  -->
+            <ImageButton
+                    android:id="@+id/event5_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:background="#00ffffff"
+                    android:onClick="onToggleStar5"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_alignTop="@+id/event5"/>
+
+
+        <!-- layout for the 6th event -->
+            <!-- start time -->
+            <TextView
+                    android:id="@+id/event6_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="648dp"
+                    android:text="12pm"
+                    android:textAppearance="@style/time"
+                    android:gravity="top"
+            />
+
+
+            <View
+                    android:id="@+id/event6_ball"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42.2dp"
+                    android:layout_alignTop="@+id/event6_time"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/ball"
+            />
+
+
+            <!-- Line -->
+            <View
+                    android:id="@+id/line_6"
+                    android:rotation="90"
+                    android:layout_width="40.5dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="26dp"
+                    android:layout_alignTop="@+id/event6_ball"
+                    android:layout_marginTop="27dp"
+                    android:background="@drawable/line"
+            />
+
+            <!-- event6 -->
+            <TextView
+                    android:id="@+id/event6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignTop="@+id/event6_ball"
+                    android:layout_marginTop="0dp"
+                    android:text="place Holder"
+                    android:textAppearance="@style/eventsStyle"
+                    android:gravity="top"
+            />
+
+            <!-- Location -->
+            <TextView
+                    android:id="@+id/event6_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_below="@+id/event6"
+                    android:text="location"
+                    android:textAppearance="@style/location"
+                    android:gravity="top"
+            />
+
+            <!-- Star  -->
+            <ImageButton
+                    android:id="@+id/event6_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:background="#00ffffff"
+                    android:onClick="onToggleStar6"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_alignTop="@+id/event6"/>
+
+
+        <!-- layout for the 7th event -->
+            <!-- start time -->
+            <TextView
+                    android:id="@+id/event7_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="740dp"
+                    android:text="1pm"
+                    android:textAppearance="@style/time"
+                    android:gravity="top"
+            />
+
+
+            <View
+                    android:id="@+id/event7_ball"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42.2dp"
+                    android:layout_alignTop="@+id/event7_time"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/ball"
+            />
+
+
+            <!-- Line -->
+            <View
+                    android:id="@+id/line_7"
+                    android:rotation="90"
+                    android:layout_width="40.5dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="26dp"
+                    android:layout_alignTop="@+id/event7_ball"
+                    android:layout_marginTop="27dp"
+                    android:background="@drawable/line"
+            />
+
+            <!-- event7 -->
+            <TextView
+                    android:id="@+id/event7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignTop="@+id/event7_ball"
+                    android:layout_marginTop="0dp"
+                    android:text="place Holder"
+                    android:textAppearance="@style/eventsStyle"
+                    android:gravity="top"
+            />
+
+            <!-- Location -->
+            <TextView
+                    android:id="@+id/event7_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_below="@+id/event7"
+                    android:text="location"
+                    android:textAppearance="@style/location"
+                    android:gravity="top"
+            />
+
+            <!-- Star  -->
+            <ImageButton
+                    android:id="@+id/event7_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:background="#00ffffff"
+                    android:onClick="onToggleStar7"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_alignTop="@+id/event7"/>
+
+        <!-- layout for the 8th event -->
+            <!-- start time -->
+            <TextView
+                    android:id="@+id/event8_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="832dp"
+                    android:text="4pm"
+                    android:textAppearance="@style/time"
+                    android:gravity="top"
+            />
+
+
+            <View
+                    android:id="@+id/event8_ball"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42.2dp"
+                    android:layout_alignTop="@+id/event8_time"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/ball"
+            />
+
+
+            <!-- Line -->
+            <View
+                    android:id="@+id/line_8"
+                    android:rotation="90"
+                    android:layout_width="40.5dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="26dp"
+                    android:layout_alignTop="@+id/event8_ball"
+                    android:layout_marginTop="27dp"
+                    android:background="@drawable/line"
+            />
+
+            <!-- event7 -->
+            <TextView
+                    android:id="@+id/event8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignTop="@+id/event8_ball"
+                    android:layout_marginTop="0dp"
+                    android:text="place Holder"
+                    android:textAppearance="@style/eventsStyle"
+                    android:gravity="top"
+            />
+
+            <!-- Location -->
+            <TextView
+                    android:id="@+id/event8_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_below="@+id/event8"
+                    android:text="location"
+                    android:textAppearance="@style/location"
+                    android:gravity="top"
+            />
+
+            <!-- Star  -->
+            <ImageButton
+                    android:id="@+id/event8_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:background="#00ffffff"
+                    android:onClick="onToggleStar8"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_alignTop="@+id/event8"/>
+
+        <!-- layout for the 9th event -->
+            <!-- start time -->
+            <TextView
+                    android:id="@+id/event9_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="924dp"
+                    android:text="5pm"
+                    android:textAppearance="@style/time"
+                    android:gravity="top"
+            />
+
+
+            <View
+                    android:id="@+id/event9_ball"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42.2dp"
+                    android:layout_alignTop="@+id/event9_time"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/ball"
+            />
+
+
+            <!-- Line -->
+            <View
+                    android:id="@+id/line_9"
+                    android:rotation="90"
+                    android:layout_width="40.5dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="26dp"
+                    android:layout_alignTop="@+id/event9_ball"
+                    android:layout_marginTop="27dp"
+                    android:background="@drawable/line"
+            />
+
+            <!-- event9 -->
+            <TextView
+                    android:id="@+id/event9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_alignTop="@+id/event9_ball"
+                    android:layout_marginTop="0dp"
+                    android:text="place Holder"
+                    android:textAppearance="@style/eventsStyle"
+                    android:gravity="top"
+            />
+
+            <!-- Location -->
+            <TextView
+                    android:id="@+id/event9_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="98dp"
+                    android:layout_below="@+id/event9"
+                    android:text="location"
+                    android:textAppearance="@style/location"
+                    android:gravity="top"
+            />
+
+            <!-- Star  -->
+            <ImageButton
+                    android:id="@+id/event9_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:background="#00ffffff"
+                    android:onClick="onToggleStar9"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="60dp"
+                    android:layout_alignTop="@+id/event9"/>
+
+            <TextView
+                    android:id="@+id/blank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="950dp"
+
+            />
         </RelativeLayout>
+
     </ScrollView>
 </RelativeLayout>

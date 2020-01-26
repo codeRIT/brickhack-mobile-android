@@ -64,6 +64,7 @@
         </activity>
         -->
         <activity android:name=".Activities.MainActivity"/>
+        <activity android:name=".Activities.HomePage"/>
         <!--<activity android:name=".unused.DashBoard" />-->
         <!--<activity android:name=".unused.Wristband" />-->
         <!--<activity android:name=".unused.History" />-->
