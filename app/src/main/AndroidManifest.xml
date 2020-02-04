@@ -19,7 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ProfileActivity"></activity>
         <activity
             android:name=".Activities.LoginActivity"
             android:label="@string/app_name">
@@ -38,12 +37,10 @@
         </activity>
         <activity android:name="net.openid.appauth.RedirectUriReceiverActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="brickhack" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="brickhack"/>
             </intent-filter>
         </activity>
         <!--
@@ -66,7 +63,11 @@
             </intent-filter>
         </activity>
         -->
-        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.MainActivity"/>
+        <!--<activity android:name=".unused.DashBoard" />-->
+        <!--<activity android:name=".unused.Wristband" />-->
+        <!--<activity android:name=".unused.History" />-->
+        <!--<activity android:name=".unused.ManageAttendees" />-->
     </application>
 
 </manifest>
