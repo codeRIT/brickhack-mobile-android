@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name=".Activities.HomePage"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,7 +64,7 @@
         </activity>
         -->
         <activity android:name=".Activities.MainActivity"/>
-        <activity android:name=".Activities.HomePage"/>
+        <!---<activity android:name=".Activities.HomePage"/>-->
         <!--<activity android:name=".unused.DashBoard" />-->
         <!--<activity android:name=".unused.Wristband" />-->
         <!--<activity android:name=".unused.History" />-->
