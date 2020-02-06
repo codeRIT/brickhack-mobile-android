@@ -101,26 +101,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:text="N/A"
+                android:text=""
                 android:textSize="20sp" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="Email"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="15dp"-->
+            <!--                android:text="Email"-->
+            <!--                android:textSize="22sp"-->
+            <!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/user_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:text="N/A"
-                android:textSize="20sp" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/user_email"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="15dp"-->
+            <!--                android:layout_marginRight="15dp"-->
+            <!--                android:text="N/A"-->
+            <!--                android:textSize="20sp" />-->
 
         </LinearLayout>
 
