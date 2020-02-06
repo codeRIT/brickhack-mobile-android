@@ -23,7 +23,20 @@ public class Constants {
     public static final String SHARED_PREFERENCE = "BrickHack";
     public static final String AUTH_STATE = "AUTH_STATE";
     public static final String SERVICE_CONFIGURATION = "SERVICE_CONFIGURATION";
-    public static final String URL = "https://hm.baudouin.io";
+    public static final String TEST_URL = "https://hm.baudouin.io";
+    public static final String URL = "https://apply.brickhack.io";
+
+    public static final String END_POINT = URL + "/oauth/authorize";
+    public static final String TOKEN = URL + "/oauth/token";
+
+    public static final String CLIENT_ID = "b0a484dfaf474fdfd43ad7867d3c70fe8d76195ee565f36a29677fdbd8a168d3";
+    public static final String USED_INTENT = "USED_INTENT";
+
+    public static final String GOOSHEETS = "https://sheets.googleapis.com/v4/spreadsheets/1eCEF8d4jkSMcY_nZue93roCCdkbyfiBG0G0XZ5KV9xI?fields=sheets" +
+            "(data.rowData.values.userEnteredValue)&key=AIzaSyCt1OkeQmc0ygJLwTIb5ZMrWHoACf1v2yo";
+
+    public static final String GOO = "https://sheets.googleapis.com/v4/spreadsheets/";
+
 
     public static final String TAG = "Constants";
 
@@ -60,7 +73,7 @@ public class Constants {
         ArrayList<String> results = new ArrayList<>();
 
         BrickHackAPI brickHackAPI = retrofit.create(BrickHackAPI.class);
-        Call<JsonElement> call = brickHackAPI.getUser(jsonid);
+        Call<JsonElement> call = brickHackAPI.getUser();
         call.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -77,7 +90,7 @@ public class Constants {
                     Log.i(TAG, "onResponse: " + results);
 
                 } else {
-//                    Toast.makeText(ProfileActivity.this, "Not success", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ProfileFragment.this, "Not success", Toast.LENGTH_LONG).show();
                 }
             }
 

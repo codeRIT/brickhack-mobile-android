@@ -109,7 +109,7 @@ public class Connections {
     // TODO: 2019-10-28  I have all the info, all I need is to pass them into user class
     private void useruser(String uid) {
         BrickHackAPI brickHackAPI = retrofit.create(BrickHackAPI.class);
-        Call<JsonElement> call = brickHackAPI.getUser(uid);
+        Call<JsonElement> call = brickHackAPI.getUser();
         call.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {

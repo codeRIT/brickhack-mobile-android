@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--    <item-->
+    <!--        android:id="@+id/btn_schedule"-->
+    <!--        android:icon="@drawable/ic_menu_camera"-->
+    <!--        android:enabled="true"-->
+    <!--        android:title="Schedule"/>-->
+
+    <!--    <item-->
+    <!--        android:id="@+id/btn_stuff"-->
+    <!--        android:enabled="true"-->
+    <!--        android:icon="@drawable/ic_menu_manage"-->
+    <!--        android:title="Stuff"/>-->
+
+    <!--    <item-->
+    <!--        android:id="@+id/btn_map"-->
+    <!--        android:enabled="true"-->
+    <!--        android:icon="@drawable/ic_menu_gallery"-->
+    <!--        android:title="Map"/>-->
+
+    <item
+        android:id="@+id/btn_about"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_share"
+        android:title="About" />
+
+
+</menu>

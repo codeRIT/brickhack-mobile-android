@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Schedule -->
+    <TextView
+        android:id="@+id/schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:gravity="top"
+        android:text="@string/schedule"
+        android:textAppearance="@style/schedule" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/schedule" />
+
+
+    <!--    &lt;!&ndash; Attendee Image &ndash;&gt;-->
+    <!--    <View-->
+    <!--            android:id="@+id/attendee_im"-->
+    <!--            android:layout_width="40dp"-->
+    <!--            android:layout_height="40dp"-->
+    <!--            android:layout_alignParentStart="true"-->
+    <!--            android:layout_marginStart="33dp"-->
+    <!--            android:layout_alignParentTop="true"-->
+    <!--            android:layout_marginTop="38dp"-->
+    <!--            android:background="@drawable/attendee_im"-->
+    <!--    />-->
+
+    <!--    &lt;!&ndash; profile name &ndash;&gt;-->
+    <!--    <TextView-->
+    <!--            android:id="@+id/HomePageName"-->
+    <!--            android:layout_width="121dp"-->
+    <!--            android:layout_height="18dp"-->
+    <!--            android:layout_alignParentStart="true"-->
+    <!--            android:layout_marginStart="94dp"-->
+    <!--            android:layout_alignParentTop="true"-->
+    <!--            android:layout_marginTop="41dp"-->
+    <!--            android:text="Place Holder"-->
+    <!--            android:textAppearance="@style/profileName"-->
+    <!--            android:gravity="top"-->
+    <!--    />-->
+
+    <!--    &lt;!&ndash; University &ndash;&gt;-->
+    <!--    <TextView-->
+    <!--            android:id="@+id/university_"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_alignParentStart="true"-->
+    <!--            android:layout_marginStart="94dp"-->
+    <!--            android:layout_alignParentTop="true"-->
+    <!--            android:layout_marginTop="60dp"-->
+    <!--            android:text="Place Holder University"-->
+    <!--            android:textAppearance="@style/university"-->
+    <!--            android:gravity="top" />-->
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/schedule" />
+
+</RelativeLayout>

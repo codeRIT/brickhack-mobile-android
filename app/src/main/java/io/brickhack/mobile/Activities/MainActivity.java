@@ -1,66 +1,42 @@
 package io.brickhack.mobile.Activities;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
-import net.openid.appauth.AuthState;
-import net.openid.appauth.AuthorizationServiceConfiguration;
+import com.google.android.material.tabs.TabLayout;
 
-import org.json.JSONException;
-
-import static io.brickhack.mobile.Commons.Constants.AUTH_STATE;
-import static io.brickhack.mobile.Commons.Constants.SERVICE_CONFIGURATION;
-import static io.brickhack.mobile.Commons.Constants.SHARED_PREFERENCE;
+import io.brickhack.mobile.Adapters.ViewPagerAdapter;
+import io.brickhack.mobile.Fragments.HomePage;
+import io.brickhack.mobile.Fragments.ProfileFragment;
+import io.brickhack.mobile.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    AuthState authState;
-    AuthorizationServiceConfiguration serviceConfig;
-    public static final String TAG = "MAIN";
-
+    private TabLayout tabLayout;
+    private ViewPagerAdapter adapter;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
-        authState = restoreAuthState();
-        serviceConfig = restoreServiceConfig();
+        tabLayout = findViewById(R.id.tablayout);
+        viewPager = findViewById(R.id.view_pager);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
+//        adapter.addFragments(new FavoriteFragment(), "Favorites");
+        adapter.addFragments(new HomePage(), "");
+        adapter.addFragments(new ProfileFragment(), "");
+
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        //Icons
+//        tabLayout.getTabAt(0).setIcon(R.drawable.favorite);
+        tabLayout.getTabAt(0).setIcon(R.drawable.home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.profile);
     }
-
-    @Nullable
-    private AuthState restoreAuthState() {
-        String jsonString = getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE)
-                .getString(AUTH_STATE, null);
-        if (!TextUtils.isEmpty(jsonString)) {
-            try {
-                return AuthState.jsonDeserialize(jsonString);
-            } catch (JSONException jsonException) {
-                // should never happen
-            }
-        }
-        return null;
-    }
-
-    @Nullable
-    private AuthorizationServiceConfiguration restoreServiceConfig() {
-        String jsonString = getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE)
-                .getString(SERVICE_CONFIGURATION, null);
-        if (!TextUtils.isEmpty(jsonString)) {
-            try {
-                return AuthorizationServiceConfiguration.fromJson(jsonString);
-            } catch (JSONException jsonException) {
-                // should never happen
-            }
-        }
-        return null;
-    }
-
-
-
 }

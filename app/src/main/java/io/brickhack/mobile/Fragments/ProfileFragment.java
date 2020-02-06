@@ -1,15 +1,17 @@
-package io.brickhack.mobile;
+package io.brickhack.mobile.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,6 +28,7 @@ import java.io.IOException;
 
 import io.brickhack.mobile.API.BrickHackAPI;
 import io.brickhack.mobile.Commons.Constants;
+import io.brickhack.mobile.R;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -41,37 +44,38 @@ import static io.brickhack.mobile.Commons.Constants.SERVICE_CONFIGURATION;
 import static io.brickhack.mobile.Commons.Constants.SHARED_PREFERENCE;
 import static io.brickhack.mobile.Commons.Constants.URL;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileFragment extends Fragment {
 
-    public static final String TAG = "Profile";
-    AuthState authState;
-    AuthorizationServiceConfiguration serviceConfig;
+    private static final String TAG = "Profile";
+    private AuthState authState;
+    private AuthorizationServiceConfiguration serviceConfig;
     //UI
     private TextView user_first_name;
     private TextView user_last_name;
-    private TextView user_school;
-    private TextView user_email;
+    private TextView user_major;
+//    private TextView user_email;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        Log.e(TAG, "onCreateView: PROFILE");
 
-        Toolbar toolbar = findViewById(R.id.username);
-        user_first_name = findViewById(R.id.user_first_name);
-        user_last_name = findViewById(R.id.user_last_name);
-        user_school = findViewById(R.id.user_school);
-        user_email = findViewById(R.id.user_email);
+        user_first_name = view.findViewById(R.id.user_first_name);
+        user_last_name = view.findViewById(R.id.user_last_name);
+        user_major = view.findViewById(R.id.user_major);
+//        user_email = view.findViewById(R.id.user_email);
 
         authState = restoreAuthState();
         serviceConfig = restoreServiceConfig();
 
         networkstuff();
+        return view;
     }
 
     @Nullable
     private AuthState restoreAuthState() {
-        String jsonString = getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE)
+        String jsonString = getContext().getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE)
                 .getString(AUTH_STATE, null);
         if (!TextUtils.isEmpty(jsonString)) {
             try {
@@ -83,9 +87,10 @@ public class ProfileActivity extends AppCompatActivity {
         return null;
     }
 
+    //
     @Nullable
     private AuthorizationServiceConfiguration restoreServiceConfig() {
-        String jsonString = getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE)
+        String jsonString = getContext().getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE)
                 .getString(SERVICE_CONFIGURATION, null);
         if (!TextUtils.isEmpty(jsonString)) {
             try {
@@ -97,9 +102,8 @@ public class ProfileActivity extends AppCompatActivity {
         return null;
     }
 
-
     private void networkstuff() {
-        AuthorizationService service = new AuthorizationService(this);
+        AuthorizationService service = new AuthorizationService(getContext());
         authState.performActionWithFreshTokens(service, new AuthState.AuthStateAction() {
             @Override
             public void execute(@Nullable String accessToken, @Nullable String idToken, @Nullable AuthorizationException ex) {
@@ -135,12 +139,14 @@ public class ProfileActivity extends AppCompatActivity {
                 call.enqueue(new Callback<JsonElement>() {
                     @Override
                     public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                        Log.e(TAG, "onResponse: " + response);
                         if (response.isSuccessful()) {
                             JsonElement jsonuid = response.body().getAsJsonObject().get("resource_owner_id");
-                            populateView(jsonuid.toString(), accessToken);
+                            Log.e(TAG, "onResponse: " + jsonuid);
+                            populateView(accessToken);
 
                         } else {
-                            Toast.makeText(ProfileActivity.this, "Not success", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(ProfileFragment.this, "Not success", Toast.LENGTH_LONG).show();
                         }
                     }
 
@@ -154,14 +160,11 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void populateView(String userid, String accessToken) {
+    private void populateView(String accessToken) {
         Retrofit retrofit = Constants.RetrofitBuilder(accessToken);
 
-        //Get user's name
-//        ArrayList<String> result = Constants.RetroResult(retrofit, userid, "first_name", "last_name");
-
         BrickHackAPI brickHackAPI = retrofit.create(BrickHackAPI.class);
-        Call<JsonElement> call = brickHackAPI.getUser(userid);
+        Call<JsonElement> call = brickHackAPI.getUser();
         call.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -171,16 +174,15 @@ public class ProfileActivity extends AppCompatActivity {
                     assert response.body() != null;
                     JsonElement first = response.body().getAsJsonObject().get("first_name");
                     JsonElement last = response.body().getAsJsonObject().get("last_name");
-                    JsonElement sid = response.body().getAsJsonObject().get("school_id");
+                    JsonElement major = response.body().getAsJsonObject().get("major");
 
                     user_first_name.setText(first.getAsString());
                     user_last_name.setText(last.getAsString());
-
-                    populateVieww(retrofit, sid.getAsString());
+                    user_major.setText(major.getAsString());
 
                 } else {
                     Log.i(TAG, "Error requesting data");
-                    Toast.makeText(ProfileActivity.this, "Not success", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ProfileFragment.this, "Not success", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -191,27 +193,5 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
 
-    }
-
-    private void populateVieww(Retrofit retrofit, String schoolid) {
-        BrickHackAPI brickHackAPI = retrofit.create(BrickHackAPI.class);
-        Call<JsonElement> call = brickHackAPI.getSchool(schoolid);
-        call.enqueue(new Callback<JsonElement>() {
-            @Override
-            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                if (response.isSuccessful()) {
-                    assert response.body() != null;
-                    JsonElement school = response.body().getAsJsonObject().get("name");
-                    user_school.setText(school.getAsString());
-                } else {
-                    Log.i(TAG, "Error requesting data");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<JsonElement> call, Throwable t) {
-
-            }
-        });
     }
 }
