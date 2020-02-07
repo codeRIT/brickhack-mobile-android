@@ -41,17 +41,20 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
     implementation 'com.google.android.material:material:1.1.0-alpha06'
 
-    // Timer
-    implementation 'com.github.anugotta:FlipTimerView:v1.5'
-
 
     //Internet
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
+//    implementation 'com.google.apis:google-api-services-sheets:v4-rev20200123-1.30.3'
     //implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
     //implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
 
+    //google
+//    implementation 'com.google.api-client:google-api-client:1.30.4'
+//    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.30.4'
+    implementation 'com.android.volley:volley:1.1.0'
 
 }

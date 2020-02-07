@@ -59,6 +59,7 @@
     <string name="forget_password">Forget Password</string>
     <string name="welcome">Welcome,</string>
     <string name="placeholder_name">PlaceHolder Name</string>
+    <string name="schedule">schedule</string>
 
 
 </resources>
