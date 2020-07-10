@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
@@ -38,20 +40,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'net.openid:appauth:0.7.1'
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
-    implementation 'com.google.android.material:material:1.1.0-alpha06'
-
-    // Timer
-    implementation 'com.github.anugotta:FlipTimerView:v1.5'
 
 
-    //Internet
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
-    //implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
-    //implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
-
-
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
