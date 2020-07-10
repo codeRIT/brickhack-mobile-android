@@ -1,4 +1,4 @@
-package io.brickhack.mobile.Model;
+package io.brickhack6.mobile.Model;
 
 public class User {
     private static User user = null;

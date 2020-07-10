@@ -1,4 +1,4 @@
-package io.brickhack.mobile.API;
+package io.brickhack6.mobile.API;
 
 import com.google.gson.JsonElement;
 

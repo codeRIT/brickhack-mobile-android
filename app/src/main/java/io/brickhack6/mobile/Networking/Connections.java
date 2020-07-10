@@ -1,4 +1,4 @@
-package io.brickhack.mobile.Networking;
+package io.brickhack6.mobile.Networking;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,8 +13,8 @@ import com.google.gson.JsonElement;
 import net.openid.appauth.AuthState;
 import net.openid.appauth.AuthorizationService;
 
-import io.brickhack.mobile.API.BrickHackAPI;
-import io.brickhack.mobile.Model.User;
+import io.brickhack6.mobile.API.BrickHackAPI;
+import io.brickhack6.mobile.Model.User;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;

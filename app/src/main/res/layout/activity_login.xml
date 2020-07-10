@@ -11,8 +11,8 @@
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
         android:layout_marginStart="60dp"
-        android:contentDescription="@string/brickhack_logo"
-        android:src="@drawable/hack_logo_v6"/>
+        android:contentDescription="@string/brickhack_logo" />
+    <!--        android:src="@drawable/hack_logo_v6"/>-->
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package io.brickhack.mobile.Utils;
+package io.brickhack6.mobile.Utils;
 
 import android.net.Uri;
 
