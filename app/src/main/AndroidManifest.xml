@@ -3,30 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="io.brickhack6.mobile">
 
-    <uses-permission android:name="android.permission.NFC" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
-        android:icon="@drawable/hack_logo_v6"
-        android:roundIcon="@drawable/hack_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:label="BrickHack"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Fragments.ProfileFragment" />
-        <activity android:name="net.openid.appauth.RedirectUriReceiverActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="brickhack" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fragments.HomePage" />
     </application>
 
 </manifest>
